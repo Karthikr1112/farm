@@ -12,9 +12,61 @@
   <meta name="author" content="Uzhavan Valam">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="{% static 'styles.css' %}">
+  <link rel="stylesheet" href="{% static 'styles.css' %}?v=1.8">
 </head>
 <body>
+
+  <!-- Luxurious Modern Page Transition Loader -->
+  <div id="modern-page-loader" style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1b5e20 0%, #122216 100%);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1), visibility 0.8s;
+    color: #ffffff;
+  ">
+    <div style="
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+      animation: pulseBrand 2s infinite ease-in-out;
+    ">
+      <svg viewBox="0 0 24 24" style="width:44px; height:44px; fill:#e8f5e9; filter: drop-shadow(0 0 8px rgba(232,245,233,0.35));">
+        <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C22,3 11,5 17,8M6,18C6.56,18 7,17.56 7,17C7,16.44 6.56,16 6,16C5.44,16 5,16.44 5,17C5,17.56 5.44,18 6,18M8,14C8.56,14 9,13.56 9,13C9,12.44 8.56,12 8,12C7.44,12 7,12.44 7,13C7,13.56 7.44,14 8,14M10,10C10.56,10 11,9.56 11,9C11,8.44 10.56,8 10,8C9.44,8 9,8.44 9,9C9,9.56 9.44,10 10,10Z" />
+      </svg>
+      Uzhavan<span style="color:#a3e635;">Valam</span>
+    </div>
+    <div class="loader-spinner" style="
+      width: 36px;
+      height: 36px;
+      border: 3.5px solid rgba(255,255,255,0.1);
+      border-top: 3.5px solid #a3e635;
+      border-radius: 50%;
+      animation: spinLoader 0.9s cubic-bezier(0.5, 0.1, 0.4, 0.9) infinite;
+    "></div>
+  </div>
+  <style>
+    @keyframes spinLoader {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes pulseBrand {
+      0%, 100% { transform: scale(0.97); opacity: 0.9; }
+      50% { transform: scale(1.02); opacity: 1; }
+    }
+  </style>
 
   <!-- Navigation Header -->
   <header id="header">
@@ -62,15 +114,15 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-content">
-          <div class="badge badge-alt">
+          <div class="badge badge-alt hero-reveal">
             <svg viewBox="0 0 24 24" style="width:16px; height:16px; fill:var(--secondary-dark); margin-right:4px;">
               <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" />
             </svg>
             100% Certified Organic & Pure
           </div>
-          <h1 class="hero-title">100% Natural Organic Fertilizer <span>For Farms, Gardens & Nurseries</span></h1>
-          <p class="hero-desc">Elevate your crop yields and revive soil fertility using premium quality Goat manure, Cow manure, and microbial-rich compost. Processed traditionally for maximum organic power.</p>
-          <div class="hero-buttons">
+          <h1 class="hero-title hero-reveal">100% Natural Organic Fertilizer <span>For Farms, Gardens & Nurseries</span></h1>
+          <p class="hero-desc hero-reveal">Elevate your crop yields and revive soil fertility using premium quality Goat manure, Cow manure, and microbial-rich compost. Processed traditionally for maximum organic power.</p>
+          <div class="hero-buttons hero-reveal">
             <a href="{% url 'order_page' %}" class="btn btn-primary">Order Now</a>
             <a href="https://wa.me/919944634026?text=Hi!%20I%20am%20interested%20in%20ordering%20your%20organic%20fertilizer." target="_blank" class="btn btn-whatsapp">
               <svg viewBox="0 0 24 24" style="width:20px; height:20px; fill:white;">
@@ -79,7 +131,7 @@
               WhatsApp Inquiry
             </a>
           </div>
-          <div class="hero-stats">
+          <div class="hero-stats hero-reveal">
             <div class="stat-item">
               <h3>100%</h3>
               <p>Chemical Free</p>
@@ -95,7 +147,7 @@
           </div>
         </div>
         
-        <div class="hero-card-container">
+        <div class="hero-card-container hero-reveal">
           <div class="hero-glass-card">
             <h4>
               <svg viewBox="0 0 24 24"><path d="M12,2C11.5,2 11,2.19 10.59,2.59L2.59,10.59C1.78,11.4 1.78,12.72 2.59,13.53L10.59,21.53C11,21.94 11.5,22 12,22C12.5,22 13,21.94 13.41,21.53L21.53,13.53C22.34,12.72 22.34,11.4 21.53,10.59L13.41,2.59C13,2.19 12.5,2 12,2M12,4L20,12L12,20L4,12L12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" /></svg>
@@ -129,7 +181,7 @@
   <section id="about" class="section-padding about">
     <div class="container">
       <div class="about-grid">
-        <div class="about-images">
+        <div class="about-images scroll-reveal reveal-left">
           <div class="about-img-wrapper about-img-large">
             <img src="{% static '240_F_1567880735_PkKA7C3XYsxpafCXX8HEwktr2DnlzdtK.jpg' %}" alt="Organic farming and rich compost production">
           </div>
@@ -141,7 +193,7 @@
           </div>
         </div>
         
-        <div class="about-content">
+        <div class="about-content scroll-reveal reveal-right">
           <div class="badge">Our Philosophy</div>
           <h2>Nurturing the Earth, Empowering Farmers</h2>
           <p class="about-highlight">At Uzhavan Valam, we believe that healthy life begins in rich, chemical-free soil.</p>
@@ -498,13 +550,13 @@
         
         <!-- Featured Video Box -->
         <div class="featured-video-box">
-          <div class="featured-video-wrapper">
+          <div class="featured-video-wrapper scroll-reveal reveal-left">
             <video id="featured-video" controls poster="{% static '240_F_433990913_M5CkMYQBEckYCu3ntipfp7mRBO9mOPyb.jpg' %}">
               <source src="{% static 'istockphoto-510635795-640_adpp_is.mp4' %}" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
-          <div class="featured-video-info">
+          <div class="featured-video-info scroll-reveal reveal-right">
             <div class="badge">Featured Video</div>
             <h3>Watch Our Manure Compost Cycle</h3>
             <p>Go behind the scenes at Uzhavan Valam. See how we source pure dairy manure and premium goat bedding, layer our solarization piles, monitor humidity levels, and sift the aged output to yield clean, organic compost. Zero chemical additives. Pure microbial strength.</p>
@@ -584,7 +636,7 @@
   <section id="contact" class="section-padding contact">
     <div class="container">
       <div class="contact-grid">
-        <div class="contact-info-panel">
+        <div class="contact-info-panel scroll-reveal reveal-left">
           <div>
             <div class="badge">Get in Touch</div>
             <h2 class="contact-headline">Ready to Nourish <span>Your Soil?</span></h2>
@@ -625,7 +677,7 @@
           <p style="font-size:0.85rem; color:var(--text-muted);">* Safe, contactless delivery arrangements available for home orders. Bulk freight rates calculated on standard local transporter scales.</p>
         </div>
         
-        <div class="contact-form-wrapper">
+        <div class="contact-form-wrapper scroll-reveal reveal-right">
           <form id="inquiry-form" onsubmit="handleInquirySubmit(event)">
             <h3 style="font-size:1.5rem; margin-bottom: 24px; color:var(--primary-dark);">Soil & Manure Inquiry Form</h3>
             
@@ -911,6 +963,86 @@
       const successScreen = document.getElementById('success-screen');
       successScreen.classList.remove('active');
     }
+
+    // Stylish Scroll-driven Reveal Observer for all cards (staggered wave entrance!)
+    document.addEventListener("DOMContentLoaded", function() {
+      const cardSelectors = [
+        '.product-card', 
+        '.benefit-card', 
+        '.customer-card', 
+        '.pack-card', 
+        '.testimonial-card',
+        '.gallery-item',
+        '.featured-video-box'
+      ];
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '-30px 0px -30px 0px', // Soft boundary to trigger exit transitions before hitting screen edges
+        threshold: 0.05
+      };
+      
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Find index of entry target to calculate stagger delay
+            const target = entry.target;
+            const parent = target.parentElement;
+            const siblings = parent ? Array.from(parent.children) : [];
+            const index = siblings.indexOf(target);
+            
+            // Stagger animation timing delay based on index in row!
+            setTimeout(() => {
+              if (target.classList.contains('scroll-reveal')) {
+                target.classList.add('active');
+              }
+            }, Math.min(index * 90, 270));
+          } else {
+            // Remove 'active' status when scrolling out of view to allow infinite repeating triggers
+            entry.target.classList.remove('active');
+          }
+        });
+      }, observerOptions);
+      
+      // Select all card elements and dynamically apply scroll-reveal class with alternating direction
+      cardSelectors.forEach(selector => {
+        document.querySelectorAll(selector).forEach((element, idx) => {
+          // Alternate entry slide direction (even index = left, odd = right)
+          const directionClass = (idx % 2 === 0) ? 'reveal-left' : 'reveal-right';
+          element.classList.add('scroll-reveal', directionClass);
+        });
+      });
+      
+      // Observe all elements that have the scroll-reveal class!
+      document.querySelectorAll('.scroll-reveal').forEach(element => {
+        observer.observe(element);
+        
+        // Safe Fallback: Auto-reveal elements after 4 seconds (pure backup to allow full loader & observer transition flow)
+        setTimeout(() => {
+          if (!element.classList.contains('active')) {
+            element.classList.add('active');
+          }
+        }, 4000);
+      });
+      
+      // Luxurious cinematic fade-out of screen loader immediately on DOM ready
+      const loader = document.getElementById('modern-page-loader');
+      if (loader) {
+        loader.style.opacity = '0';
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 800);
+      }
+      
+      // Trigger staggered hero items entrance slide-up
+      setTimeout(() => {
+        document.querySelectorAll('.hero-reveal').forEach((el, index) => {
+          setTimeout(() => {
+            el.classList.add('active');
+          }, index * 100);
+        });
+      }, 200);
+    });
   </script>
 </body>
 </html>

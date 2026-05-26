@@ -1598,3 +1598,154 @@ footer {
     padding: 30px 20px;
   }
 }
+
+/* Custom Stylish Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 50px;
+  border: 2.5px solid var(--bg-cream);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Elegant Scroll Reveal Left & Right Entrance Animations with Frosted Blur Transition */
+.scroll-reveal.reveal-left {
+  opacity: 0 !important;
+  transform: translateX(-100px) scale(0.95) !important;
+  filter: blur(12px) !important;
+  transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1), transform 1.3s cubic-bezier(0.16, 1, 0.3, 1), filter 1.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: opacity, transform, filter;
+}
+
+.scroll-reveal.reveal-right {
+  opacity: 0 !important;
+  transform: translateX(100px) scale(0.95) !important;
+  filter: blur(12px) !important;
+  transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1), transform 1.3s cubic-bezier(0.16, 1, 0.3, 1), filter 1.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: opacity, transform, filter;
+}
+
+.scroll-reveal.reveal-left.active,
+.scroll-reveal.reveal-right.active {
+  opacity: 1 !important;
+  transform: translateX(0) scale(1) !important;
+  filter: blur(0px) !important;
+}
+
+/* Elegant individual hover transitions to make all cards feel extremely interactive */
+.product-card, .benefit-card, .customer-card, .pack-card, .testimonial-card, .gallery-item {
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), border-color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+}
+
+/* Apple & Stripe-style Frosted Glass Header scrolled styling override */
+header.scrolled {
+  background-color: rgba(250, 248, 245, 0.75) !important;
+  backdrop-filter: saturate(180%) blur(16px) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.025) !important;
+  border-bottom: 1px solid rgba(46, 125, 50, 0.05) !important;
+}
+
+/* Modern Apple-style Staggered Hero Load Reveal */
+.hero-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.hero-reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Modern glow & soft-floating shadows for luxury card hover effects */
+.product-card:hover, .benefit-card:hover, .pack-card:hover, .customer-card:hover, .testimonial-card:hover {
+  transform: translateY(-10px) scale(1.015) !important;
+  box-shadow: 0 20px 40px rgba(46, 125, 50, 0.1) !important;
+  border-color: rgba(46, 125, 50, 0.25) !important;
+}
+
+/* Highly specific hover selector to override reveal active transform locks */
+.product-card.scroll-reveal.active:hover, 
+.benefit-card.scroll-reveal.active:hover, 
+.pack-card.scroll-reveal.active:hover, 
+.customer-card.scroll-reveal.active:hover, 
+.testimonial-card.scroll-reveal.active:hover {
+  transform: translateY(-12px) scale(1.02) !important;
+  box-shadow: 0 25px 50px rgba(46, 125, 50, 0.15) !important;
+  border-color: rgba(46, 125, 50, 0.35) !important;
+}
+
+/* 🌟 TRENDING STYLE UPGRADES 🌟 */
+
+/* 1. Dynamic Underline Slide-In for Navigation Menu Links */
+nav ul li a {
+  position: relative !important;
+}
+
+nav ul li a::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: -6px !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 2.5px !important;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
+  transform: scaleX(0) !important;
+  transform-origin: right !important;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+  border-radius: 4px !important;
+}
+
+nav ul li a:hover::after, nav ul li a.active::after {
+  transform: scaleX(1) !important;
+  transform-origin: left !important;
+}
+
+/* 2. Apple & Stripe-Style Gradient Text Highlight for primary brands */
+.hero-title span, .section-header h2 span, .contact-headline span {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: 800 !important;
+}
+
+/* 3. Subtle Floating Animations (Aliveness Effect) */
+@keyframes floatAnimationLarge {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(0.5deg); }
+}
+
+@keyframes floatAnimationSmall {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-5px) scale(1.015); }
+}
+
+.about-img-large, .featured-video-wrapper {
+  animation: floatAnimationLarge 6s ease-in-out infinite !important;
+}
+
+.about-img-small, .badge-alt, .logo svg {
+  animation: floatAnimationSmall 5s ease-in-out infinite !important;
+}
+
+.about-img-small:nth-child(2) {
+  animation-delay: 1.5s !important;
+}
+
+.about-img-small:nth-child(3) {
+  animation-delay: 3s !important;
+}
+
+/* 4. Luxury Card Glassmorphic Reflective Border Overlay */
+.product-card, .benefit-card, .pack-card, .testimonial-card, .about-img-wrapper {
+  border: 1px solid rgba(46, 125, 50, 0.06) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.015) !important;
+}
