@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Natural Village Farm | Administrative Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <style>
+    :root {
+      --primary: #2d6a4f;
+      --primary-light: #52b788;
+      --primary-dark: #1b4332;
+      --accent: #d8f3dc;
+      --background: #f8f9fa;
+      --text: #2D3748;
+      --text-muted: #718096;
+      --white: #ffffff;
+      --radius: 12px;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background-color: var(--primary-dark);
+      color: var(--white);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow-md);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .navbar-brand svg {
+      fill: var(--primary-light);
+      width: 28px;
+      height: 28px;
+    }
+
+    .navbar-brand span {
+      color: var(--primary-light);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--white);
+      border: 2px solid var(--primary-light);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary-light);
+      color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-success {
+      background-color: #38a169;
+      color: var(--white);
+      padding: 6px 12px;
+      font-size: 0.8rem;
+    }
+
+    .btn-success:hover {
+      background-color: #276749;
+    }
+
+    .btn-warning {
+      background-color: #dd6b20;
+      color: var(--white);
+      padding: 6px 12px;
+      font-size: 0.8rem;
+    }
+
+    .btn-warning:hover {
+      background-color: #9c4221;
+    }
+
+    .btn-danger {
+      background-color: #e53e3e;
+      color: var(--white);
+      padding: 6px 12px;
+      font-size: 0.8rem;
+    }
+
+    .btn-danger:hover {
+      background-color: #9b2c2c;
+    }
+
+    .main-container {
+      max-width: 1400px;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+
+    .dashboard-header {
+      margin-bottom: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dashboard-title h1 {
+      font-size: 2rem;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+    }
+
+    .dashboard-title p {
+      color: var(--text-muted);
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .stat-card {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-left: 5px solid var(--primary);
+      transition: var(--transition);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .stat-card.active-leads {
+      border-left-color: var(--primary-light);
+    }
+
+    .stat-card.completed-leads {
+      border-left-color: #38a169;
+    }
+
+    .stat-info h3 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .stat-info .stat-value {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .stat-icon {
+      background-color: var(--accent);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stat-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: var(--primary);
+    }
+
+    /* Charts Section */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 992px) {
+      .charts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .chart-card {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .chart-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 8px;
+    }
+
+    .chart-container {
+      position: relative;
+      height: 300px;
+      width: 100%;
+    }
+
+    /* Table Card */
+    .table-card {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 40px;
+      overflow: hidden;
+    }
+
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .table-header h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th {
+      background-color: var(--background);
+      color: var(--primary-dark);
+      padding: 16px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    td {
+      padding: 16px;
+      border-bottom: 1px solid #edf2f7;
+      font-size: 0.9rem;
+      vertical-align: middle;
+    }
+
+    tr:hover td {
+      background-color: #fcfdfc;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 50px;
+    }
+
+    .status-badge.active {
+      background-color: #feebc8;
+      color: #c05621;
+    }
+
+    .status-badge.completed {
+      background-color: #c6f6d5;
+      color: #22543d;
+    }
+
+    .action-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    /* Empty state */
+    .empty-state {
+      padding: 48px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .empty-state svg {
+      width: 64px;
+      height: 64px;
+      fill: var(--text-muted);
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dashboard Navigation -->
+  <header class="navbar">
+    <div class="navbar-brand">
+      <svg viewBox="0 0 24 24">
+        <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C22,3 11,5 17,8M6,18C6.56,18 7,17.56 7,17C7,16.44 6.56,16 6,16C5.44,16 5,16.44 5,17C5,17.56 5.44,18 6,18M8,14C8.56,14 9,13.56 9,13C9,12.44 8.56,12 8,12C7.44,12 7,12.44 7,13C7,13.56 7.44,14 8,14M10,10C10.56,10 11,9.56 11,9C11,8.44 10.56,8 10,8C9.44,8 9,8.44 9,9C9,9.56 9.44,10 10,10Z" />
+      </svg>
+      Natural<span>Village</span> CRM
+    </div>
+    
+    <div class="nav-actions">
+      <a href="{% url 'landing_page' %}" class="btn btn-outline" target="_blank">
+        <svg viewBox="0 0 24 24" style="width:18px; height:18px; fill:currentColor;"><path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"/></svg>
+        View Public Landing
+      </a>
+      <a href="{% url 'export_orders_csv' %}" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" style="width:18px; height:18px; fill:currentColor;"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M16,11V18H14V14H10V18H8V11L12,7L16,11Z"/></svg>
+        Export Leads (.CSV)
+      </a>
+    </div>
+  </header>
+
+  <main class="main-container">
+    
+    <div class="dashboard-header">
+      <div class="dashboard-title">
+        <h1>Soil Inquiry & Lead Tracker</h1>
+        <p>Manage raw customer inquiries, categorize leads, and monitor distribution analytics.</p>
+      </div>
+    </div>
+
+    <!-- Stats Count Grid -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-info">
+          <h3>Total Inquiries</h3>
+          <div class="stat-value">{{ total_leads }}</div>
+        </div>
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24"><path d="M21,11C21,16.52 17.52,21 12,21C6.48,21 2,16.52 2,11C2,5.48 6.48,1 12,1C17.52,1 21,5.48 21,11M19,11C19,7.69 15.87,5 12,5C8.13,5 5,7.69 5,11C5,12.33 5.5,13.56 6.36,14.5L5.7,17.75L8.96,16.7C9.88,16.9 10.92,17 12,17C15.87,17 19,14.31 19,11Z"/></svg>
+        </div>
+      </div>
+
+      <div class="stat-card active-leads">
+        <div class="stat-info">
+          <h3>Active Requests</h3>
+          <div class="stat-value" style="color: #c05621;">{{ active_leads }}</div>
+        </div>
+        <div class="stat-icon" style="background-color: #feebc8;">
+          <svg viewBox="0 0 24 24" style="fill: #c05621;"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,10H13V18H11V10M11,6H13V8H11V6Z"/></svg>
+        </div>
+      </div>
+
+      <div class="stat-card completed-leads">
+        <div class="stat-info">
+          <h3>Fulfillments Completed</h3>
+          <div class="stat-value" style="color: #276749;">{{ completed_leads }}</div>
+        </div>
+        <div class="stat-icon" style="background-color: #c6f6d5;">
+          <svg viewBox="0 0 24 24" style="fill: #38a169;"><path d="M12,2C6.48,2 2,6.48 2,12C2,17.52 6.48,22 12,22C17.52,22 22,17.52 22,12C22,6.48 17.52,2 12,2M10,17L5,12L6.41,10.59L10,14.17L17.59,6.58L19,8L10,17Z"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analytics Charts Grid -->
+    <section class="charts-grid">
+      
+      <div class="chart-card">
+        <h3>Leads by Client Category</h3>
+        <div class="chart-container">
+          <canvas id="categoryChart"></canvas>
+        </div>
+      </div>
+      
+      <div class="chart-card">
+        <h3>Product Interest Volume</h3>
+        <div class="chart-container">
+          <canvas id="productChart"></canvas>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Table of Orders -->
+    <section class="table-card">
+      <div class="table-header">
+        <h3>Incoming Inquiries Log</h3>
+      </div>
+      
+      <div class="table-wrapper">
+        {% if inquiries %}
+          <table>
+            <thead>
+              <tr>
+                <th>Date Received</th>
+                <th>Client Name</th>
+                <th>Phone Number</th>
+                <th>Client Class</th>
+                <th>Product Selected</th>
+                <th>Message Description</th>
+                <th>Fulfilled Status</th>
+                <th style="text-align: center;">Controls</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in inquiries %}
+                <tr>
+                  <td style="white-space: nowrap; color: var(--text-muted);">
+                    {{ item.created_at|date:"Y-m-d H:i" }}
+                  </td>
+                  <td><strong>{{ item.name }}</strong></td>
+                  <td>
+                    <a href="https://wa.me/{{ item.phone }}" target="_blank" style="color: var(--primary); text-decoration:none; font-weight:600;">
+                      {{ item.phone }} ↗
+                    </a>
+                  </td>
+                  <td>
+                    <span style="font-weight: 500; font-size: 0.85rem;">{{ item.category }}</span>
+                  </td>
+                  <td>
+                    <span style="background-color: var(--accent); color: var(--primary-dark); padding:4px 8px; border-radius:6px; font-weight:600; font-size:0.8rem;">
+                      {{ item.product }}
+                    </span>
+                  </td>
+                  <td style="max-width: 250px; color: var(--text-muted); font-size: 0.85rem;">
+                    {{ item.message|default:"- No details provided -" }}
+                  </td>
+                  <td>
+                    {% if item.status == 'Active' %}
+                      <span class="status-badge active">Active Inquiry</span>
+                    {% else %}
+                      <span class="status-badge completed">Delivered</span>
+                    {% endif %}
+                  </td>
+                  <td>
+                    <div class="action-group" style="justify-content: center;">
+                      {% if item.status == 'Active' %}
+                        <a href="{% url 'complete_order' item.id %}" class="btn btn-success">Complete Delivery</a>
+                      {% else %}
+                        <a href="{% url 'complete_order' item.id %}" class="btn btn-warning">Re-open</a>
+                      {% endif %}
+                      <a href="{% url 'delete_order' item.id %}" onclick="return confirm('Confirm removal of this order record?')" class="btn btn-danger">Delete</a>
+                    </div>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <div class="empty-state">
+            <svg viewBox="0 0 24 24">
+              <path d="M19,19H5V8H19M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M16.53,11.06L15.47,10L12,13.47L8.53,10L7.47,11.06L10.94,14.53L7.47,18L8.53,19.06L12,15.59L15.47,19.06L16.53,18L13.06,14.53L16.53,11.06Z"/>
+            </svg>
+            <p style="font-weight:600; font-size: 1.1rem; color: var(--primary-dark);">No Inquiries Logged Yet</p>
+            <p style="font-size:0.9rem; margin-top:4px;">Incoming form entries from your website landing page will display dynamically in this window.</p>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Injected JSON data variables passed directly from django controllers
+    const categories = {{ categories_js|safe }};
+    const catData = {{ cat_data_js|safe }};
+    const products = {{ products_js|safe }};
+    const prodData = {{ prod_data_js|safe }};
+
+    // Client Category Doughnut Chart Setup
+    const ctxCat = document.getElementById('categoryChart').getContext('2d');
+    new Chart(ctxCat, {
+      type: 'doughnut',
+      data: {
+        labels: categories.length ? categories : ['No Data'],
+        datasets: [{
+          data: catData.length ? catData : [1],
+          backgroundColor: ['#2d6a4f', '#52b788', '#95d5b2', '#d8f3dc', '#74c69d'],
+          borderWidth: 2,
+          borderColor: '#ffffff'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              font: { family: 'Outfit', size: 12 }
+            }
+          }
+        }
+      }
+    });
+
+    // Product Interest Bar Chart Setup
+    const ctxProd = document.getElementById('productChart').getContext('2d');
+    new Chart(ctxProd, {
+      type: 'bar',
+      data: {
+        labels: products.length ? products : ['No Data'],
+        datasets: [{
+          label: 'Order Volume count',
+          data: prodData.length ? prodData : [0],
+          backgroundColor: '#52b788',
+          borderRadius: 8,
+          borderWidth: 0,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              stepSize: 1,
+              font: { family: 'Outfit' }
+            }
+          },
+          x: {
+            ticks: {
+              font: { family: 'Outfit' }
+            }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

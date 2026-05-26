@@ -1,0 +1,917 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Natural Village Farm | 100% Natural Organic Fertilizer</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Premium 100% natural organic goat manure, cow manure, and compost. Specially processed for high-yield chemical-free farming, home gardens, nurseries, and terrace gardens.">
+  <meta name="keywords" content="organic fertilizer, goat manure, cow manure, organic compost, chemical-free farming, natural farm manure, terrace garden soil">
+  <meta name="author" content="Natural Village Farm">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header id="header">
+    <div class="container nav-wrapper">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 24 24">
+          <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C22,3 11,5 17,8M6,18C6.56,18 7,17.56 7,17C7,16.44 6.56,16 6,16C5.44,16 5,16.44 5,17C5,17.56 5.44,18 6,18M8,14C8.56,14 9,13.56 9,13C9,12.44 8.56,12 8,12C7.44,12 7,12.44 7,13C7,13.56 7.44,14 8,14M10,10C10.56,10 11,9.56 11,9C11,8.44 10.56,8 10,8C9.44,8 9,8.44 9,9C9,9.56 9.44,10 10,10Z" />
+        </svg>
+        Natural<span>VillageFarm</span>
+      </a>
+      
+      <nav id="nav-menu">
+        <ul>
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#customers">Our Clients</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <div class="header-actions">
+        <a href="{% url 'order_page' %}" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">Order Now</a>
+      </div>
+      
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <!-- Cinematic looping video background -->
+    <video autoplay loop muted playsinline class="hero-video-bg">
+      <source src="{% static 'istockphoto-510635795-640_adpp_is.mp4' %}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-overlay"></div>
+    
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="badge badge-alt">
+            <svg viewBox="0 0 24 24" style="width:16px; height:16px; fill:var(--secondary-dark); margin-right:4px;">
+              <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" />
+            </svg>
+            100% Certified Organic & Pure
+          </div>
+          <h1 class="hero-title">100% Natural Organic Fertilizer <span>For Farms, Gardens & Nurseries</span></h1>
+          <p class="hero-desc">Elevate your crop yields and revive soil fertility using premium quality Goat manure, Cow manure, and microbial-rich compost. Processed traditionally for maximum organic power.</p>
+          <div class="hero-buttons">
+            <a href="{% url 'order_page' %}" class="btn btn-primary">Order Now</a>
+            <a href="https://wa.me/919944634026?text=Hi!%20I%20am%20interested%20in%20ordering%20your%20organic%20fertilizer." target="_blank" class="btn btn-whatsapp">
+              <svg viewBox="0 0 24 24" style="width:20px; height:20px; fill:white;">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.47 16.86L2 22L7.3 20.61C8.74 21.39 10.37 21.8 12.04 21.8C17.5 21.8 21.95 17.35 21.95 11.9C21.95 9.26 20.92 6.78 19.05 4.9C17.18 3.03 14.68 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.9C20.28 16.44 16.58 20.13 12.04 20.13C10.61 20.13 9.22 19.76 8 19.05L7.71 18.87L4.56 19.7L5.39 16.63L5.2 16.32C4.42 15.09 4 13.5 4 11.91C4 7.37 7.6 3.67 12.05 3.67M8.83 7.68C8.63 7.68 8.3 7.76 8.03 8.05C7.76 8.34 7 9.08 7 10.58C7 12.08 8.09 13.53 8.24 13.73C8.39 13.93 10.33 17.08 13.37 18.28C16.27 19.42 16.85 19.14 17.48 18.54C18.1 17.94 18.85 16.53 19 15.86C19.15 15.19 19.15 14.62 19.1 14.5C19.05 14.39 18.9 14.33 18.67 14.22C18.45 14.11 17.35 13.56 17.14 13.49C16.94 13.41 16.79 13.38 16.64 13.61C16.49 13.83 16.07 14.33 15.94 14.49C15.8 14.66 15.67 14.68 15.45 14.56C14.6 14.14 13.78 13.59 13.06 12.94C12.5 12.44 12.12 11.82 12.01 11.63C11.9 11.41 12 11.29 12.11 11.18C12.21 11.08 12.33 10.92 12.44 10.79C12.56 10.67 12.6 10.58 12.67 10.43C12.75 10.29 12.71 10.16 12.66 10.05C12.6 9.94 12.11 8.7 11.9 8.21C11.69 7.72 11.48 7.79 11.33 7.79C11.18 7.79 11 7.68 10.79 7.68M8.83 7.68" />
+              </svg>
+              WhatsApp Inquiry
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <h3>100%</h3>
+              <p>Chemical Free</p>
+            </div>
+            <div class="stat-item">
+              <h3>5,000+</h3>
+              <p>Happy Farmers</p>
+            </div>
+            <div class="stat-item">
+              <h3>4.9★</h3>
+              <p>Product Quality</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-card-container">
+          <div class="hero-glass-card">
+            <h4>
+              <svg viewBox="0 0 24 24"><path d="M12,2C11.5,2 11,2.19 10.59,2.59L2.59,10.59C1.78,11.4 1.78,12.72 2.59,13.53L10.59,21.53C11,21.94 11.5,22 12,22C12.5,22 13,21.94 13.41,21.53L21.53,13.53C22.34,12.72 22.34,11.4 21.53,10.59L13.41,2.59C13,2.19 12.5,2 12,2M12,4L20,12L12,20L4,12L12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" /></svg>
+              Quick Delivery
+            </h4>
+            <ul>
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" /></svg>
+                <span><strong>Premium Goat Manure:</strong> Perfect NPK ratio for rapid flowering and rich crop yield.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" /></svg>
+                <span><strong>Aged Cow Manure:</strong> Excellent carbon-to-nitrogen ratio for soil aeration & water retention.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" /></svg>
+                <span><strong>Rich Organic Compost:</strong> Completely odorless, solarized, and cured compost block supply.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" /></svg>
+                <span><strong>Flexible Packaging:</strong> Shipped from small 1KG packages to full bulk commercial truckloads.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section-padding about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-images">
+          <div class="about-img-wrapper about-img-large">
+            <img src="{% static '240_F_1567880735_PkKA7C3XYsxpafCXX8HEwktr2DnlzdtK.jpg' %}" alt="Organic farming and rich compost production">
+          </div>
+          <div class="about-img-wrapper about-img-small">
+            <img src="{% static '240_F_1627811796_x3txHwJNHbUxDGsgUMlZsjaoAPlAzHEy.jpg' %}" alt="Rich soil heap being aerated">
+          </div>
+          <div class="about-img-wrapper about-img-small">
+            <img src="{% static '240_F_1886356388_0Zk4tLZefNqr0x5ZLLfms1awZ4FeYMPe.jpg' %}" alt="Goat and Cow manure heaps">
+          </div>
+        </div>
+        
+        <div class="about-content">
+          <div class="badge">Our Philosophy</div>
+          <h2>Nurturing the Earth, Empowering Farmers</h2>
+          <p class="about-highlight">At Natural Village Farm, we believe that healthy life begins in rich, chemical-free soil.</p>
+          <p class="about-text">We supply high-grade organic cow manure, goat manure, and custom-cured compost block formulas that are naturally matured and carefully solarized to clear weed seeds and pathogens. Free from chemical additives, our products work in harmony with soil biology to restore long-term soil structure and microbial density.</p>
+          
+          <div class="about-features">
+            <div class="about-feat-item">
+              <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" /></svg>
+              <span>100% Goat Manure</span>
+            </div>
+            <div class="about-feat-item">
+              <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" /></svg>
+              <span>Pure Cow Manure</span>
+            </div>
+            <div class="about-feat-item">
+              <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" /></svg>
+              <span>Aged Compost Process</span>
+            </div>
+            <div class="about-feat-item">
+              <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" /></svg>
+              <span>Chemical-Free Farming</span>
+            </div>
+          </div>
+          
+          <a href="#contact" class="btn btn-secondary">Learn Our Process</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="section-padding products">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="badge">Premium Range</div>
+        <h2 class="section-title">Our Organic <span>Products</span></h2>
+        <p class="section-desc">Hand-cured, solarized, and nutrient-dense organic fertilizer customized perfectly for your agricultural needs.</p>
+      </div>
+      
+      <div class="products-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+          <div class="product-img-holder">
+            <img src="{% static '240_F_684861872_ukxcR8lHBQp3tQr21YuJ8IVVS0VEI87r.jpg' %}" alt="Premium Goat Manure Pellets">
+            <span class="product-badge">Top Seller</span>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Goat Manure</h3>
+            <p class="product-desc">Rich in nitrogen and potassium. High pellet form allows slow release, preventing root-burn while providing steady nutrient supply to flowering plants and intensive crops.</p>
+            <table class="product-spec-table">
+              <tr>
+                <td>Available Sizes</td>
+                <td>1KG / 5KG / 25KG</td>
+              </tr>
+              <tr>
+                <td>Form</td>
+                <td>Crushed & Aged Pellets</td>
+              </tr>
+              <tr>
+                <td>Best For</td>
+                <td>Flowering, Veggies & Fruit Crops</td>
+              </tr>
+            </table>
+            <a href="{% url 'order_page' %}" class="btn btn-secondary text-center" style="width:100%;">Inquire Now</a>
+          </div>
+        </div>
+        
+        <!-- Product 2 -->
+        <div class="product-card">
+          <div class="product-img-holder">
+            <img src="{% static '240_F_1627811796_x3txHwJNHbUxDGsgUMlZsjaoAPlAzHEy.jpg' %}" alt="Organic Cow Manure Fertilizer">
+            <span class="product-badge">100% Aged</span>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Cow Manure</h3>
+            <p class="product-desc">Fully composted and dried. Extremely rich in organic carbon and humus. Excellent soil conditioner that enhances soil texture, aerates root structures, and multiplies earthworms.</p>
+            <table class="product-spec-table">
+              <tr>
+                <td>Available Sizes</td>
+                <td>1KG / 5KG / Full Truck Load</td>
+              </tr>
+              <tr>
+                <td>Form</td>
+                <td>Finely Pulverized Compost</td>
+              </tr>
+              <tr>
+                <td>Best For</td>
+                <td>Large Farms, Lawns & Nursery Soil</td>
+              </tr>
+            </table>
+            <a href="{% url 'order_page' %}" class="btn btn-secondary text-center" style="width:100%;">Inquire Now</a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section id="benefits" class="section-padding benefits">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="badge badge-alt">Why Choose Us</div>
+        <h2 class="section-title">The Natural <span>Difference</span></h2>
+        <p class="section-desc">Experience rapid root growth, superior water-holding capability, and higher crop yields with certified manure.</p>
+      </div>
+      
+      <div class="benefits-grid">
+        <!-- Benefit 1 -->
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <svg viewBox="0 0 24 24">
+              <path d="M12,3C17.5,3 22,6.5 22,11C22,15.5 17.5,19 12,19C10.6,19 9.25,18.75 8,18.3L4,20L5.3,16.7C3.3,15.3 2,13.3 2,11C2,6.5 6.5,3 12,3M12,5C7.6,5 4,7.7 4,11C4,12.7 4.95,14.2 6.5,15.2L5.8,17L8.1,16C9.3,16.6 10.6,17 12,17C16.4,17 20,14.3 20,11C20,7.7 16.4,5 12,5Z" />
+            </svg>
+          </div>
+          <h3 class="benefit-title">Improves Soil Health</h3>
+          <p class="benefit-desc">Promotes essential soil microbes and multiplies earthworm count naturally.</p>
+        </div>
+        
+        <!-- Benefit 2 -->
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <svg viewBox="0 0 24 24">
+              <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M17,13H13V17H11V13H7V11H11V7H13V11H17V13Z" />
+            </svg>
+          </div>
+          <h3 class="benefit-title">Better Plant Growth</h3>
+          <p class="benefit-desc">Enhances flowering, boosts fruit counts, and increases crop yields significantly.</p>
+        </div>
+        
+        <!-- Benefit 3 -->
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z" />
+            </svg>
+          </div>
+          <h3 class="benefit-title">100% Eco-Friendly</h3>
+          <p class="benefit-desc">Reduces groundwater pollution and matches sustainable environmental standards.</p>
+        </div>
+        
+        <!-- Benefit 4 -->
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <svg viewBox="0 0 24 24">
+              <path d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M16,11.5L13,8.5V11H8V12H13V14.5L16,11.5Z" />
+            </svg>
+          </div>
+          <h3 class="benefit-title">Organic Farming Support</h3>
+          <p class="benefit-desc">Perfectly formulated to fit organic standards and certification requirements.</p>
+        </div>
+        
+        <!-- Benefit 5 -->
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <svg viewBox="0 0 24 24">
+              <path d="M12,2C11.5,2 11,2.19 10.59,2.59L2.59,10.59C1.78,11.4 1.78,12.72 2.59,13.53L10.59,21.53C11,21.94 11.5,22 12,22C12.5,22 13,21.94 13.41,21.53L21.53,13.53C22.34,12.72 22.34,11.4 21.53,10.59L13.41,2.59C13,2.19 12.5,2 12,2M12,4L20,12L12,20L4,12L12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" />
+            </svg>
+          </div>
+          <h3 class="benefit-title">Safe for Vegetables</h3>
+          <p class="benefit-desc">Non-toxic, fully cured, completely odor-minimized and safe for kitchen gardening.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Target Customers Section -->
+  <section id="customers" class="section-padding customers">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="badge">Built For You</div>
+        <h2 class="section-title">Designed For All <span>Growers</span></h2>
+        <p class="section-desc">From commercial agrarian fields to modern urban indoor plant shelves, we cater to every gardening scale.</p>
+      </div>
+      
+      <div class="customers-grid">
+        <!-- Target 1 -->
+        <div class="customer-card">
+          <div class="customer-icon">
+            <svg viewBox="0 0 24 24"><path d="M19,19H5V5H19V19M19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M13.96,12.29L11.21,15.83L9.25,13.47L6.5,17H17.5L13.96,12.29Z" /></svg>
+          </div>
+          <h3 class="customer-name">Farmers</h3>
+          <p class="customer-desc">High volume bulk deliveries and direct farm supply. Specially structured tractor or truck load pricing packages.</p>
+        </div>
+        
+        <!-- Target 2 -->
+        <div class="customer-card">
+          <div class="customer-icon">
+            <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" /></svg>
+          </div>
+          <h3 class="customer-name">Home Gardeners</h3>
+          <p class="customer-desc">Small, convenient bags (1KG/5KG) with easy handling zip locks. Minimizes space usage with zero storage hassle.</p>
+        </div>
+        
+        <!-- Target 3 -->
+        <div class="customer-card">
+          <div class="customer-icon">
+            <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" /></svg>
+          </div>
+          <h3 class="customer-name">Nurseries</h3>
+          <p class="customer-desc">Uniform moisture-cured supply contracts. Optimizes root establishment, minimizing sapling mortality rate.</p>
+        </div>
+        
+        <!-- Target 4 -->
+        <div class="customer-card">
+          <div class="customer-icon">
+            <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" /></svg>
+          </div>
+          <h3 class="customer-name">Terrace Garden Users</h3>
+          <p class="customer-desc">Odorless dry formulations perfectly engineered for urban balconies. Boosts vegetable yields in grow bag setups.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packaging Sizes Section -->
+  <section class="section-padding packaging">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="badge">Packaging Options</div>
+        <h2 class="section-title">Flexible <span>Order Sizes</span></h2>
+        <p class="section-desc">Choose from ready-to-use retail bags to bulk tractor or truck loads depending on your specific area scale.</p>
+      </div>
+      
+      <div class="packaging-grid">
+        <!-- Pack 1 -->
+        <div class="pack-card">
+          <div>
+            <div class="pack-weight">1 KG</div>
+            <h3 class="pack-title">Home Plant Pack</h3>
+            <p class="pack-details">Excellent for apartment balcony potted plants, flowering rose bushes, and indoor ferns.</p>
+          </div>
+          <a href="#contact" class="pack-btn">Inquire Size</a>
+        </div>
+        
+        <!-- Pack 2 -->
+        <div class="pack-card">
+          <div>
+            <div class="pack-weight">5 KG</div>
+            <h3 class="pack-title">Kitchen Garden Pack</h3>
+            <p class="pack-details">Specially packed for terrace vegetable grow bags, small organic lawn patches, and domestic borders.</p>
+          </div>
+          <a href="#contact" class="pack-btn">Inquire Size</a>
+        </div>
+        
+        <!-- Pack 3 -->
+        <div class="pack-card">
+          <div>
+            <div class="pack-weight">25 KG</div>
+            <h3 class="pack-title">Farm & Estate Bag</h3>
+            <p class="pack-details">Ideal choice for mid-sized estate lawns, organic orchards, nurseries, and large terrace setups.</p>
+          </div>
+          <a href="#contact" class="pack-btn">Inquire Size</a>
+        </div>
+        
+        <!-- Pack 4 -->
+        <div class="pack-card">
+          <div>
+            <div class="pack-weight">Bulk</div>
+            <h3 class="pack-title">Custom Order Loads</h3>
+            <p class="pack-details">Prepared upon inquiry. Packed in custom sacks or loose delivery, matching specified quantity orders.</p>
+          </div>
+          <a href="#contact" class="pack-btn">Inquire Size</a>
+        </div>
+        
+        <!-- Pack 5 -->
+        <div class="pack-card">
+          <div>
+            <div class="pack-weight">Truck</div>
+            <h3 class="pack-title">Full Truck Load</h3>
+            <p class="pack-details">Commercial agricultural scaling. Directly loaded from our maturation yards straight to your farming fields.</p>
+          </div>
+          <a href="#contact" class="pack-btn">Inquire Size</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="section-padding gallery">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="badge">Visual Tour</div>
+        <h2 class="section-title">Farm & <span>Processing Gallery</span></h2>
+        <p class="section-desc">Take a look at our natural organic composting process, our agricultural fields, and high-yielding healthy plant results.</p>
+      </div>
+      
+      <div class="gallery-grid">
+        <!-- Gallery Item 1 -->
+        <div class="gallery-item" onclick="openLightbox(this)" data-large="{% static '240_F_1627811796_x3txHwJNHbUxDGsgUMlZsjaoAPlAzHEy.jpg' %}" data-caption="High-Quality Goat Manure Pellets Rich in NPK">
+          <img src="{% static '240_F_684861872_ukxcR8lHBQp3tQr21YuJ8IVVS0VEI87r.jpg' %}" alt="Rich compost and crop care">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-cat">Our Products</span>
+              <h4 class="gallery-title">Goat Manure Pile</h4>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gallery Item 2 -->
+        <div class="gallery-item" onclick="openLightbox(this)" data-large="{% static '240_F_1886356388_0Zk4tLZefNqr0x5ZLLfms1awZ4FeYMPe.jpg' %}" data-caption="Finely Pulverized Age-Cured Cow Manure Compost Heap">
+          <img src="{% static '240_F_1886356388_0Zk4tLZefNqr0x5ZLLfms1awZ4FeYMPe.jpg' %}" alt="Composting manure process">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-cat">Preparation</span>
+              <h4 class="gallery-title">Cow Manure Aeration</h4>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gallery Item 3 -->
+        <div class="gallery-item" onclick="openLightbox(this)" data-large="{% static '240_F_1567880735_PkKA7C3XYsxpafCXX8HEwktr2DnlzdtK.jpg' %}" data-caption="Solarized Soil & Organic Compost Blending">
+          <img src="{% static '240_F_1567880735_PkKA7C3XYsxpafCXX8HEwktr2DnlzdtK.jpg' %}" alt="Stirring organic compost">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-cat">Blending Yard</span>
+              <h4 class="gallery-title">Microbial Compost Mixing</h4>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gallery Item 4 -->
+        <div class="gallery-item" onclick="openLightbox(this)" data-large="{% static '240_F_433990913_M5CkMYQBEckYCu3ntipfp7mRBO9mOPyb.jpg' %}" data-caption="Healthy Rice Paddy Farming Yielded with Organic Manure">
+          <img src="{% static '240_F_433990913_M5CkMYQBEckYCu3ntipfp7mRBO9mOPyb.jpg' %}" alt="Lush green village farm fields">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-cat">Farm Results</span>
+              <h4 class="gallery-title">Healthy Village Farming</h4>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gallery Item 5 -->
+        <div class="gallery-item" onclick="openLightbox(this)" data-large="{% static '240_F_524262916_s9sZ3q1Hm6hgnypDzgVn4SCqOoZla3I1.jpg' %}" data-caption="Lush Domestic Terrace Garden Growing Healthy Tomatoes">
+          <img src="{% static '240_F_524262916_s9sZ3q1Hm6hgnypDzgVn4SCqOoZla3I1.jpg' %}" alt="Vibrant domestic vegetable yields">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-cat">Home Gardening</span>
+              <h4 class="gallery-title">Organic Vegetable Garden</h4>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gallery Item 6 -->
+        <div class="gallery-item" onclick="openLightbox(this)" data-large="{% static '240_F_684861872_ukxcR8lHBQp3tQr21YuJ8IVVS0VEI87r.jpg' %}" data-caption="Eco-Friendly Composting Sacks Prepared for Delivery">
+          <img src="{% static '240_F_684861872_ukxcR8lHBQp3tQr21YuJ8IVVS0VEI87r.jpg' %}" alt="Organic fertilizer bags ready for shipping">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-cat">Packaging</span>
+              <h4 class="gallery-title">Bulk Compost Sacks</h4>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Featured Video Box -->
+        <div class="featured-video-box">
+          <div class="featured-video-wrapper">
+            <video id="featured-video" controls poster="{% static '240_F_433990913_M5CkMYQBEckYCu3ntipfp7mRBO9mOPyb.jpg' %}">
+              <source src="{% static 'istockphoto-510635795-640_adpp_is.mp4' %}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="featured-video-info">
+            <div class="badge">Featured Video</div>
+            <h3>Watch Our Manure Compost Cycle</h3>
+            <p>Go behind the scenes at Natural Village Farm. See how we source pure dairy manure and premium goat bedding, layer our solarization piles, monitor humidity levels, and sift the aged output to yield clean, organic compost. Zero chemical additives. Pure microbial strength.</p>
+            <div style="display:flex; gap:12px;">
+              <button onclick="toggleVideoPlay()" class="btn btn-primary" style="padding:10px 20px; font-size:0.9rem;" id="video-play-btn">
+                Pause Video
+              </button>
+              <button onclick="toggleVideoMute()" class="btn btn-secondary" style="padding:10px 20px; font-size:0.9rem;" id="video-mute-btn">
+                Unmute Audio
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal container -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+      <img id="lightbox-img" src="" alt="Large view">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- Testimonials Section -->
+  <section class="section-padding testimonials">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="badge">Success Stories</div>
+        <h2 class="section-title">What Growers <span>Are Saying</span></h2>
+        <p class="section-desc">Read feedback from fellow agriculturists, kitchen garden practitioners, and organic nursery operators.</p>
+      </div>
+      
+      <div class="testimonials-grid">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card">
+          <p class="quote-text">“My terrace vegetable plants grew faster using this organic manure. The tomato yields are incredibly sweet, and I didn't see any odor issues or chemical residue.”</p>
+          <div class="user-profile">
+            <div class="user-avatar">SR</div>
+            <div>
+              <h4 class="user-name">Sangeetha Ramaswamy</h4>
+              <p class="user-role">Terrace Garden User</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+          <p class="quote-text">“Switching to Natural Village Farm's bulk cow manure saved our soil structure. Water retention increased by 30% this year, and crop roots look robust.”</p>
+          <div class="user-profile">
+            <div class="user-avatar">KM</div>
+            <div>
+              <h4 class="user-name">Karthik Murugan</h4>
+              <p class="user-role">Organic Banana Cultivator</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card">
+          <p class="quote-text">“High-quality compost that is properly aged and solarized. Extremely low seed weed percentage, which reduces weeding labor in our plant nurseries.”</p>
+          <div class="user-profile">
+            <div class="user-avatar">LG</div>
+            <div>
+              <h4 class="user-name">LushGreen Nursery</h4>
+              <p class="user-role">Commercial Plant Propagator</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Form Section -->
+  <section id="contact" class="section-padding contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info-panel">
+          <div>
+            <div class="badge">Get in Touch</div>
+            <h2 class="contact-headline">Ready to Nourish <span>Your Soil?</span></h2>
+            <p class="contact-desc">Send us your inquiry, or message directly on WhatsApp. Our agrarian coordinators will assist with custom compost formulations and transport options.</p>
+            
+            <ul class="contact-details-list">
+              <li class="contact-detail-item">
+                <div class="contact-detail-icon">
+                  <svg viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z" /></svg>
+                </div>
+                <div class="contact-detail-content">
+                  <h4>Call/WhatsApp Coordinator</h4>
+                  <p>+91 99446 34026</p>
+                </div>
+              </li>
+              
+              <li class="contact-detail-item">
+                <div class="contact-detail-icon">
+                  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.47 16.86L2 22L7.3 20.61C8.74 21.39 10.37 21.8 12.04 21.8C17.5 21.8 21.95 17.35 21.95 11.9C21.95 9.26 20.92 6.78 19.05 4.9C17.18 3.03 14.68 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.9C20.28 16.44 16.58 20.13 12.04 20.13C10.61 20.13 9.22 19.76 8 19.05L7.71 18.87L4.56 19.7L5.39 16.63L5.2 16.32C4.42 15.09 4 13.5 4 11.91C4 7.37 7.6 3.67 12.05 3.67M8.83 7.68C8.63 7.68 8.3 7.76 8.03 8.05C7.76 8.34 7 9.08 7 10.58C7 12.08 8.09 13.53 8.24 13.73C8.39 13.93 10.33 17.08 13.37 18.28C16.27 19.42 16.85 19.14 17.48 18.54C18.1 17.94 18.85 16.53 19 15.86C19.15 15.19 19.15 14.62 19.1 14.5C19.05 14.39 18.9 14.33 18.67 14.22C18.45 14.11 17.35 13.56 17.14 13.49C16.94 13.41 16.79 13.38 16.64 13.61C16.49 13.83 16.07 14.33 15.94 14.49C15.8 14.66 15.67 14.68 15.45 14.56C14.6 14.14 13.78 13.59 13.06 12.94C12.5 12.44 12.12 11.82 12.01 11.63C11.9 11.41 12 11.29 12.11 11.18C12.21 11.08 12.33 10.92 12.44 10.79C12.56 10.67 12.6 10.58 12.67 10.43C12.75 10.29 12.71 10.16 12.66 10.05C12.6 9.94 12.11 8.7 11.9 8.21C11.69 7.72 11.48 7.79 11.33 7.79C11.18 7.79 11 7.68 10.79 7.68M8.83 7.68" /></svg>
+                </div>
+                <div class="contact-detail-content">
+                  <h4>Quick Chat Support</h4>
+                  <a href="https://wa.me/919944634026?text=Hi!%20I%20am%20interested%20in%20ordering%20your%20organic%20fertilizer." target="_blank" style="color:var(--primary-dark); font-weight: 600;">Message Farm Coordinator</a>
+                </div>
+              </li>
+              
+              <li class="contact-detail-item">
+                <div class="contact-detail-icon">
+                  <svg viewBox="0 0 24 24"><path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" /></svg>
+                </div>
+                <div class="contact-detail-content">
+                  <h4>Farm Maturation Yard</h4>
+                  <p>Muttathara Organic Hub, National Highway Bypass,<br>Thiruvananthapuram, Kerala, India - 695008</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <p style="font-size:0.85rem; color:var(--text-muted);">* Safe, contactless delivery arrangements available for home orders. Bulk freight rates calculated on standard local transporter scales.</p>
+        </div>
+        
+        <div class="contact-form-wrapper">
+          <form id="inquiry-form" onsubmit="handleInquirySubmit(event)">
+            <h3 style="font-size:1.5rem; margin-bottom: 24px; color:var(--primary-dark);">Soil & Manure Inquiry Form</h3>
+            
+            <div class="form-group">
+              <label for="form-name">Your Full Name *</label>
+              <input type="text" id="form-name" class="form-control" placeholder="E.g., Ram Kumar" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="form-phone">Mobile Number (WhatsApp Preferred) *</label>
+              <input type="tel" id="form-phone" class="form-control" placeholder="E.g., +91 99446 34026" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="form-target">Are you a: *</label>
+              <select id="form-target" class="form-control" required>
+                <option value="" disabled selected>Select category</option>
+                <option value="Farmer">Commercial Farmer</option>
+                <option value="Home Gardener">Home / Terrace Gardener</option>
+                <option value="Nursery">Nursery Operator</option>
+                <option value="Distributor">Fertilizer Distributor</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="form-product">Product Interest *</label>
+              <select id="form-product" class="form-control" required>
+                <option value="" disabled selected>Select manure category</option>
+                <option value="Goat Manure">Goat Manure (1KG / 5KG / 25KG)</option>
+                <option value="Cow Manure">Cow Manure (1KG / 5KG / Truck Load)</option>
+                <option value="Multiple">Mix / Multiple Products</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="form-message">Describe Your Order Size / Gardening Setup</label>
+              <textarea id="form-message" class="form-control" placeholder="Tell us how many bags or truckloads you require, or details of what crops/plants you are raising."></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width:100%; border-radius: var(--radius-sm);">Submit Inquiry</button>
+          </form>
+          
+          <!-- Success Message Overlay -->
+          <div class="form-success-message" id="success-screen">
+            <div class="success-icon-wrapper">
+              <svg viewBox="0 0 24 24"><path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" /></svg>
+            </div>
+            <h4 class="success-title">Inquiry Submitted!</h4>
+            <p class="success-desc">Thank you for supporting chemical-free agriculture. Our farm coordinator will reach out to you via WhatsApp/Phone within the next 2 hours.</p>
+            <div style="display:flex; flex-direction:column; gap:12px; margin-top:24px; width:100%;">
+              <a href="#" target="_blank" class="btn btn-whatsapp" style="text-align:center; padding:10px 16px; display:inline-block; font-size:0.85rem; width:100%;">
+                Open WhatsApp Chat
+              </a>
+              <button onclick="resetInquiryForm()" class="btn btn-secondary" style="padding:8px 16px; font-size:0.85rem; width:100%;">Submit Another Inquiry</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="#" class="footer-logo">
+            <svg viewBox="0 0 24 24">
+              <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C22,3 11,5 17,8M6,18C6.56,18 7,17.56 7,17C7,16.44 6.56,16 6,16C5.44,16 5,16.44 5,17C5,17.56 5.44,18 6,18M8,14C8.56,14 9,13.56 9,13C9,12.44 8.56,12 8,12C7.44,12 7,12.44 7,13C7,13.56 7.44,14 8,14M10,10C10.56,10 11,9.56 11,9C11,8.44 10.56,8 10,8C9.44,8 9,8.44 9,9C9,9.56 9.44,10 10,10Z" />
+            </svg>
+            Natural<span>Village</span>
+          </a>
+          <p>Processing pure, organic goat and cow manures through traditional aging techniques. Helping restoring vital minerals, soil aerations, and earthworm life across commercial plantations and small urban homes alike.</p>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About Our Process</a></li>
+            <li><a href="#products">Manures & Composts</a></li>
+            <li><a href="#benefits">Agrarian Benefits</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Target Groups</h4>
+          <ul>
+            <li><a href="#customers">Commercial Farms</a></li>
+            <li><a href="#customers">Balcony Gardens</a></li>
+            <li><a href="#customers">Landscape Nurseries</a></li>
+            <li><a href="#customers">Terrace Sacks</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-newsletter">
+          <h4>Newsletter</h4>
+          <p>Get organic gardening tips, NPK application guides, and bulk shipping coupon rates straight to your inbox.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to our organic newsletter!'); this.reset();">
+            <input type="email" class="newsletter-input" placeholder="Your email address" required>
+            <button type="submit" class="newsletter-btn">Join</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Natural Village Farm. All Rights Reserved. Crafted with care for traditional farming.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Shipping Rates</a>
+        </div>
+      </div>
+    </div>
+  </footer
+
+  <!-- Scripts -->
+  <script>
+    // Header background change on scroll
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      
+      // Active navigation link highlighting on scroll
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('nav a');
+      
+      let currentSection = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + currentSection || (currentSection === '' && link.getAttribute('href') === '#')) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Mobile Menu Drawer Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    
+    menuToggle.addEventListener('click', function() {
+      navMenu.classList.toggle('active');
+      menuToggle.classList.toggle('open');
+      
+      // Animate hamburger to X
+      const spans = menuToggle.querySelectorAll('span');
+      if (menuToggle.classList.contains('open')) {
+        spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+      } else {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      }
+    });
+
+    // Close menu when clicking link
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        menuToggle.classList.remove('open');
+        const spans = menuToggle.querySelectorAll('span');
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      });
+    });
+
+    // Gallery Lightbox Modal Handler
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+
+    function openLightbox(element) {
+      const largeSrc = element.getAttribute('data-large');
+      const caption = element.getAttribute('data-caption');
+      
+      lightboxImg.src = largeSrc;
+      lightboxCaption.textContent = caption;
+      lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+    }
+
+    // Escape key closes Lightbox
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+
+    // Video Control Toggles
+    const featuredVideo = document.getElementById('featured-video');
+    const videoPlayBtn = document.getElementById('video-play-btn');
+    const videoMuteBtn = document.getElementById('video-mute-btn');
+
+    function toggleVideoPlay() {
+      if (featuredVideo.paused) {
+        featuredVideo.play();
+        videoPlayBtn.textContent = "Pause Video";
+      } else {
+        featuredVideo.pause();
+        videoPlayBtn.textContent = "Play Video";
+      }
+    }
+
+    function toggleVideoMute() {
+      if (featuredVideo.muted) {
+        featuredVideo.muted = false;
+        videoMuteBtn.textContent = "Mute Audio";
+      } else {
+        featuredVideo.muted = true;
+        videoMuteBtn.textContent = "Unmute Audio";
+      }
+    }
+
+    // Contact Form submission handler using Secure AJAX to Django database endpoint
+    function handleInquirySubmit(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('form-name').value;
+      const phone = document.getElementById('form-phone').value;
+      const category = document.getElementById('form-target').value;
+      const product = document.getElementById('form-product').value;
+      const message = document.getElementById('form-message').value;
+      
+      // Visual feedback: show success loading overlay immediately
+      const successScreen = document.getElementById('success-screen');
+      successScreen.classList.add('active');
+      
+      // Perform database AJAX post call
+      fetch('/submit-inquiry/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          phone: phone,
+          category: category,
+          product: product,
+          message: message
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          console.log("AJAX Success: saved to Django database!");
+          // Attach dynamic WhatsApp redirect link to the success button
+          const waButton = successScreen.querySelector('a.btn-whatsapp');
+          if (waButton) {
+            waButton.href = data.whatsapp_url;
+          }
+        } else {
+          console.error("AJAX Server-Side Error:", data.message);
+        }
+      })
+      .catch(error => {
+        console.error("AJAX Request Failed:", error);
+      });
+      
+      // Clear inputs
+      document.getElementById('inquiry-form').reset();
+    }
+
+    function resetInquiryForm() {
+      const successScreen = document.getElementById('success-screen');
+      successScreen.classList.remove('active');
+    }
+  </script>
+</body>
+</html>
