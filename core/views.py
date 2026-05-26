@@ -36,7 +36,7 @@ def submit_inquiry(request):
             )
 
             # Generate WhatsApp inquiry link
-            whatsapp_msg = f"Hello Natural Village Farm, I am {name} ({category}). I would like to inquire about {product}."
+            whatsapp_msg = f"Hello Uzhavan Valam, I am {name} ({category}). I would like to inquire about {product}."
             whatsapp_url = f"https://wa.me/919944634026?text={whatsapp_msg.replace(' ', '%20')}"
 
             return JsonResponse({
