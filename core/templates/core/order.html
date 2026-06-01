@@ -502,6 +502,203 @@
       background-color: #128c7e;
       transform: translateY(-2px);
     }
+
+    /* Cart Toggle Header Button styling */
+    .cart-icon-btn {
+      position: relative;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+    .cart-icon-btn:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #a3e635;
+    }
+
+    /* Floating Cart FAB */
+    .floating-cart-fab {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: white;
+      box-shadow: 0 10px 25px rgba(27, 94, 32, 0.35);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 999;
+      transition: var(--transition);
+      animation: pulseGlow 2s infinite alternate;
+    }
+    .floating-cart-fab:hover {
+      transform: scale(1.1) translateY(-5px);
+      box-shadow: 0 15px 30px rgba(27, 94, 32, 0.45);
+    }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.4); }
+      100% { box-shadow: 0 0 20px 10px rgba(46, 125, 50, 0.1); }
+    }
+
+    /* Overlay */
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(18, 34, 22, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+    .cart-overlay.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Cart Modal Container */
+    .cart-drawer {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 550px;
+      max-width: 95%;
+      height: 80vh;
+      max-height: 700px;
+      background-color: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      z-index: 10000;
+      border-radius: 24px;
+      border: 1px solid rgba(46, 125, 50, 0.15);
+      display: flex;
+      flex-direction: column;
+      font-family: 'Outfit', sans-serif;
+      opacity: 0;
+      visibility: hidden;
+      transform: translate(-50%, -45%) scale(0.95);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      overflow: hidden;
+    }
+    @supports (backdrop-filter: blur(20px)) {
+      .cart-drawer {
+        background-color: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(20px);
+      }
+    }
+    .cart-drawer.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* Drawer Header */
+    .cart-drawer-header {
+      padding: 24px;
+      border-bottom: 1px solid rgba(46, 125, 50, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to right, var(--accent), transparent);
+    }
+    .cart-drawer-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cart-drawer-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text);
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+    .cart-drawer-close:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+      transform: rotate(90deg);
+    }
+
+    /* Drawer Body */
+    .cart-drawer-body {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 24px;
+    }
+
+    /* Drawer Footer */
+    .cart-drawer-footer {
+      padding: 24px;
+      border-top: 1px solid rgba(46, 125, 50, 0.1);
+      background-color: #f7faf8;
+      box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.02);
+    }
+
+    /* Quantity controllers & row animations */
+    .cart-item-row {
+      animation: slideInItem 0.3s ease-out forwards;
+    }
+    @keyframes slideInItem {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .cart-remove-item-btn:hover {
+      color: #c53030 !important;
+      transform: scale(1.15);
+    }
+
+    /* Qty Adjustment block in drawer */
+    .qty-control button:hover {
+      background-color: var(--accent) !important;
+    }
+
+    /* Form stylings inside checkout view */
+    .cart-checkout-form .form-group {
+      margin-bottom: 16px;
+    }
+    .cart-checkout-form label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+    .cart-checkout-form .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid rgba(46, 125, 50, 0.2);
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      color: var(--text);
+      background-color: var(--white);
+      outline: none;
+      transition: var(--transition);
+    }
+    .cart-checkout-form .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(82, 183, 136, 0.15);
+    }
   </style>
 </head>
 <body>
@@ -510,10 +707,18 @@
   <header class="top-header">
     <div class="top-header-content">
       <h1>Uzhavan<span>Valam</span></h1>
-      <a href="{% url 'landing_page' %}" class="back-home-btn">
-        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M20,11H7.83l5.59-5.59L12,4l-8,8l8,8l1.41-1.41L7.83,13H20V11Z"/></svg>
-        Back to Home Page
-      </a>
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <button id="cart-toggle-btn" class="cart-icon-btn" aria-label="Open Shopping Cart" style="position: relative; background: none; border: none; cursor: pointer; color: var(--white); display: flex; align-items: center; justify-content: center; padding: 8px; transition: var(--transition);">
+          <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: currentColor;">
+            <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18M7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7C5.89,17 5,16.1 5,15C5,14.44 5.23,13.93 5.6,13.56L6.96,11.11L3,3H1V1H4.27L5.21,3H20A1,1 0 0,1 21,4C21,4.17 20.95,4.34 20.88,4.5L17.3,11C16.94,11.64 16.27,12 15.55,12H8.1L7.2,14.63Z" />
+          </svg>
+          <span class="cart-badge-count" style="display: none; position: absolute; top: -5px; right: -5px; background-color: #a3e635; color: #122216; font-size: 0.7rem; font-weight: 800; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1.5px solid #122216;">0</span>
+        </button>
+        <a href="{% url 'landing_page' %}" class="back-home-btn">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M20,11H7.83l5.59-5.59L12,4l-8,8l8,8l1.41-1.41L7.83,13H20V11Z"/></svg>
+          Back to Home Page
+        </a>
+      </div>
     </div>
   </header>
 
@@ -523,52 +728,61 @@
     <!-- Left form input area -->
     <section class="checkout-form-panel">
       
-      <!-- STEP 1: Select Fertilizer Category -->
+      <!-- STEP 1: Select Fertilizers & Pack Sizes -->
       <div class="section-title">
         <span class="step-number">1</span>
-        Select Organic Fertilizer
+        Select Fertilizers & Pack Sizes
       </div>
 
       <div class="product-selection-grid">
         <!-- Goat Manure Selectable Card -->
-        <div class="product-selectable-card active" onclick="selectProduct('Goat Manure', this)">
+        <div class="product-selectable-card active" data-product="Goat Manure" onclick="toggleProduct(this)">
           <div class="product-checkmark">
             <svg viewBox="0 0 24 24"><path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/></svg>
           </div>
           <img src="{% static '240_F_684861872_ukxcR8lHBQp3tQr21YuJ8IVVS0VEI87r.jpg' %}" alt="Goat Manure" class="product-card-img">
           <div class="product-card-title">Goat Manure</div>
           <div class="product-card-spec">NPK: 3% - 1% - 2%</div>
-          <p style="font-size:0.8rem; color: var(--text-muted);">Rich crush aged pellets. Great for rapid flowering vegetation.</p>
+          <p style="font-size:0.8rem; color: var(--text-muted); margin-bottom: 12px;">Rich crush aged pellets. Great for rapid flowering vegetation.</p>
+          
+          <!-- Size Selector Inside Card -->
+          <div style="width: 100%; margin-top: auto;" onclick="event.stopPropagation()">
+            <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 4px; text-align: left;">Choose Weight:</label>
+            <select class="form-control card-weight-select" data-product="Goat Manure" onchange="updateSummary()" style="padding: 6px 10px; font-size: 0.85rem; border-radius: 8px; border: 2px solid #e2e8f0; width: 100%;">
+              <option value="1 KG" data-price="120" data-spec="NPK 3-1-2">1 KG Bag - ₹120</option>
+              <option value="5 KG" data-price="450" data-spec="NPK 3-1-2" selected>5 KG Bag - ₹450</option>
+              <option value="25 KG" data-price="1800" data-spec="NPK 3-1-2">25 KG Sacks - ₹1800</option>
+              <option value="Bulk" data-price="Bulk" data-spec="NPK 3-1-2">Bulk Loads - Quote</option>
+            </select>
+          </div>
         </div>
 
         <!-- Cow Manure Selectable Card -->
-        <div class="product-selectable-card" onclick="selectProduct('Cow Manure', this)">
+        <div class="product-selectable-card" data-product="Cow Manure" onclick="toggleProduct(this)">
           <div class="product-checkmark">
             <svg viewBox="0 0 24 24"><path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/></svg>
           </div>
           <img src="{% static '240_F_1627811796_x3txHwJNHbUxDGsgUMlZsjaoAPlAzHEy.jpg' %}" alt="Cow Manure" class="product-card-img">
           <div class="product-card-title">Cow Manure</div>
           <div class="product-card-spec">Rich Organic Humus</div>
-          <p style="font-size:0.8rem; color: var(--text-muted);">Pulverized and fully aged. Ideal for moisture retention & aeration.</p>
+          <p style="font-size:0.8rem; color: var(--text-muted); margin-bottom: 12px;">Pulverized and fully aged. Ideal for moisture retention & aeration.</p>
+          
+          <!-- Size Selector Inside Card -->
+          <div style="width: 100%; margin-top: auto;" onclick="event.stopPropagation()">
+            <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 4px; text-align: left;">Choose Weight:</label>
+            <select class="form-control card-weight-select" data-product="Cow Manure" onchange="updateSummary()" style="padding: 6px 10px; font-size: 0.85rem; border-radius: 8px; border: 2px solid #e2e8f0; width: 100%;">
+              <option value="1 KG" data-price="80" data-spec="Microbial Humus">1 KG Bag - ₹80</option>
+              <option value="5 KG" data-price="300" data-spec="Microbial Humus" selected>5 KG Bag - ₹300</option>
+              <option value="25 KG" data-price="1200" data-spec="Microbial Humus">25 KG Sacks - ₹1200</option>
+              <option value="Bulk" data-price="Bulk" data-spec="Microbial Humus">Bulk Loads - Quote</option>
+            </select>
+          </div>
         </div>
       </div>
 
-      <!-- STEP 2: Choose Order Weight -->
+      <!-- STEP 2: Delivery & Contact Details -->
       <div class="section-title">
         <span class="step-number">2</span>
-        Select Packaging Weight
-      </div>
-
-      <div class="weight-options-row">
-        <div class="weight-option-btn" onclick="selectWeight('1 KG', this)">1 KG Bag</div>
-        <div class="weight-option-btn active" onclick="selectWeight('5 KG', this)">5 KG Bag</div>
-        <div class="weight-option-btn" onclick="selectWeight('25 KG', this)">25 KG Sacks</div>
-        <div class="weight-option-btn" onclick="selectWeight('Bulk', this)">Bulk Loads</div>
-      </div>
-
-      <!-- STEP 3: Billing & Delivery Contact Info -->
-      <div class="section-title">
-        <span class="step-number">3</span>
         Delivery & Contact Details
       </div>
 
@@ -611,24 +825,14 @@
     <aside class="checkout-summary-panel">
       <div class="summary-title">Order Summary Ticker</div>
       
-      <div class="summary-row">
-        <span>Product Selected</span>
-        <strong id="summary-product">Goat Manure</strong>
-      </div>
-      
-      <div class="summary-row">
-        <span>Packaging Unit</span>
-        <strong id="summary-weight">5 KG</strong>
+      <!-- Dynamic list of selected items -->
+      <div id="summary-items-list" style="margin-bottom: 20px;">
+        <!-- Filled dynamically by JS -->
       </div>
 
-      <div class="summary-row">
-        <span>Est. NPK Spec</span>
-        <strong id="summary-spec">3 - 1 - 2</strong>
-      </div>
-
-      <div class="summary-row" style="margin-top: 12px;">
-        <span>Product Base Price</span>
-        <strong id="summary-price">₹450</strong>
+      <div class="summary-row" style="margin-top: 12px; border-top: 1px solid rgba(46, 125, 50, 0.1); padding-top: 12px;">
+        <span>Combined Base Price</span>
+        <strong id="summary-price">₹0</strong>
       </div>
 
       <div class="summary-row">
@@ -638,7 +842,7 @@
 
       <div class="summary-row total">
         <span>Total Cost Estimation</span>
-        <span id="summary-total">₹510</span>
+        <span id="summary-total">₹0</span>
       </div>
 
       <div class="summary-spec-badge" id="badge-npk">
@@ -650,7 +854,15 @@
         💡 Add a 25 KG Sack to get FREE shipping!
       </div>
 
-      <button type="submit" form="order-form" class="place-order-btn">Book Order & Confirm</button>
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 24px;">
+        <button id="add-to-cart-summary-btn" type="button" style="width: 100%; padding: 16px; font-weight: 700; font-size: 1.1rem; border-radius: var(--radius-sm); border: none; background-color: var(--primary-light); color: var(--primary-dark); cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px;">
+          <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: currentColor;">
+            <path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.9-5h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4l-3.87 7H8.53L4.27 2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2z" />
+          </svg>
+          Add to Cart
+        </button>
+        <button type="submit" form="order-form" class="place-order-btn" style="margin-top: 0;">Direct Fast Booking</button>
+      </div>
     </aside>
 
   </main>
@@ -677,10 +889,6 @@
 
   <!-- Interactive JavaScript pricing and summary calculations -->
   <script>
-    // State management variables
-    let selectedProduct = 'Goat Manure';
-    let selectedWeight = '5 KG';
-
     // Pricing tables
     const priceMatrix = {
       'Goat Manure': {
@@ -697,69 +905,102 @@
       }
     };
 
-    function selectProduct(productName, cardElement) {
-      // Manage visual active state
-      document.querySelectorAll('.product-selectable-card').forEach(card => {
-        card.classList.remove('active');
-      });
-      cardElement.classList.add('active');
-
-      selectedProduct = productName;
+    function toggleProduct(cardElement) {
+      cardElement.classList.toggle('active');
+      
+      // Ensure at least one product is active
+      const activeCards = document.querySelectorAll('.product-selectable-card.active');
+      if (activeCards.length === 0) {
+        cardElement.classList.add('active');
+        alert("Please select at least one organic fertilizer product to proceed!");
+        return;
+      }
+      
       updateSummary();
     }
 
-    function selectWeight(weightValue, btnElement) {
-      // Manage visual active state
-      document.querySelectorAll('.weight-option-btn').forEach(btn => {
-        btn.classList.remove('active');
+    function getSelectedItems() {
+      const items = [];
+      document.querySelectorAll('.product-selectable-card.active').forEach(card => {
+        const product = card.getAttribute('data-product');
+        const select = card.querySelector('.card-weight-select');
+        const size = select.value;
+        const option = select.options[select.selectedIndex];
+        
+        const productConfig = priceMatrix[product][size];
+        
+        items.push({
+          product: product,
+          size: size,
+          price: productConfig.price,
+          spec: productConfig.spec
+        });
       });
-      btnElement.classList.add('active');
-
-      selectedWeight = weightValue;
-      updateSummary();
+      return items;
     }
 
     function updateSummary() {
-      // Update Summary Text
-      document.getElementById('summary-product').textContent = selectedProduct;
-      document.getElementById('summary-weight').textContent = selectedWeight;
-
-      const productConfig = priceMatrix[selectedProduct][selectedWeight];
+      const items = getSelectedItems();
+      const listContainer = document.getElementById('summary-items-list');
+      if (!listContainer) return;
       
-      // Update Spec value
-      document.getElementById('summary-spec').textContent = productConfig.spec;
+      listContainer.innerHTML = items.map(item => {
+        const displayPrice = typeof item.price === 'number' ? '₹' + item.price : 'Pending Quote';
+        return `
+          <div style="background-color: var(--bg); padding: 12px; border-radius: 12px; margin-bottom: 10px; border-left: 4px solid var(--primary); text-align: left;">
+            <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--primary-dark); font-size: 0.95rem;">
+              <span>${item.product}</span>
+              <span>${displayPrice}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">
+              <span>Size: ${item.size}</span>
+              <span>${item.spec}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
 
-      // Price calculation logic
-      let basePrice = productConfig.price;
+      let basePriceTotal = 0;
+      let hasCustomQuote = false;
+      let has25KG = false;
+
+      items.forEach(item => {
+        if (typeof item.price === 'number') {
+          basePriceTotal += item.price;
+        } else {
+          hasCustomQuote = true;
+        }
+        if (item.size === '25 KG') {
+          has25KG = true;
+        }
+      });
+
       let deliveryFee = 60;
-
-      // Delivery rule logic: orders >= 25KG get free shipping! Bulk loads are transport quote based
-      if (selectedWeight === '25 KG') {
+      if (has25KG || basePriceTotal >= 1000) {
         deliveryFee = 0;
         document.getElementById('delivery-tip-box').textContent = '🎉 Congratulations! You unlocked FREE shipping!';
         document.getElementById('delivery-tip-box').style.backgroundColor = '#e6fffa';
         document.getElementById('delivery-tip-box').style.color = '#006644';
-      } else if (selectedWeight === 'Bulk') {
+      } else if (items.some(item => item.size === 'Bulk')) {
         deliveryFee = 0;
         document.getElementById('delivery-tip-box').textContent = '💡 Bulk load rates will be calculated by our transporter.';
         document.getElementById('delivery-tip-box').style.backgroundColor = '#ebf8ff';
         document.getElementById('delivery-tip-box').style.color = '#2b6cb0';
       } else {
-        document.getElementById('delivery-tip-box').textContent = '💡 Add a 25 KG Sack to get FREE shipping!';
+        const remaining = 1000 - basePriceTotal;
+        document.getElementById('delivery-tip-box').innerHTML = `💡 Add <strong>₹${remaining}</strong> more or a <strong>25 KG Sack</strong> for FREE shipping!`;
         document.getElementById('delivery-tip-box').style.backgroundColor = '#fffaf0';
         document.getElementById('delivery-tip-box').style.color = '#dd6b20';
       }
 
-      // Format display
-      if (typeof basePrice === 'number') {
-        document.getElementById('summary-price').textContent = '₹' + basePrice;
-        document.getElementById('summary-delivery').textContent = deliveryFee === 0 ? 'FREE' : '₹' + deliveryFee;
-        document.getElementById('summary-total').textContent = '₹' + (basePrice + deliveryFee);
-      } else {
-        // Bulk custom pricing estimate case
+      if (hasCustomQuote) {
         document.getElementById('summary-price').textContent = 'Quote Required';
         document.getElementById('summary-delivery').textContent = 'Transporter Quote';
         document.getElementById('summary-total').textContent = 'Pending Quote';
+      } else {
+        document.getElementById('summary-price').textContent = '₹' + basePriceTotal;
+        document.getElementById('summary-delivery').textContent = deliveryFee === 0 ? 'FREE' : '₹' + deliveryFee;
+        document.getElementById('summary-total').textContent = '₹' + (basePriceTotal + deliveryFee);
       }
     }
 
@@ -773,12 +1014,28 @@
       const address = document.getElementById('order-address').value;
       const instructions = document.getElementById('order-message').value;
 
+      const items = getSelectedItems();
+      const itemsSummary = items.map(item => `${item.product} (${item.size})`).join(', ');
+      
+      let basePriceTotal = 0;
+      let hasCustomQuote = false;
+      items.forEach(item => {
+        if (typeof item.price === 'number') {
+          basePriceTotal += item.price;
+        } else {
+          hasCustomQuote = true;
+        }
+      });
+      const finalTotalDisplay = hasCustomQuote ? 'Quote Required' : '₹' + basePriceTotal;
+      
       // Build structured message body
-      const messageBody = `Order package: ${selectedWeight} of ${selectedProduct}.\nDelivery address: ${address}.\nInstructions: ${instructions}`;
+      const messageBody = `Direct Booking Request:\nItems: ${itemsSummary}\nTotal: ${finalTotalDisplay}\nDelivery address: ${address}.\nInstructions: ${instructions}`;
 
       // Open Success Overlay Screen
       const successOverlay = document.getElementById('success-overlay');
       successOverlay.classList.add('active');
+
+      const dbProduct = items.length === 1 ? items[0].product : 'Multiple';
 
       // Secure AJAX post payload to Django backend
       fetch('/submit-inquiry/', {
@@ -790,7 +1047,7 @@
           name: name,
           phone: phone,
           category: category,
-          product: selectedProduct + " (" + selectedWeight + ")",
+          product: dbProduct,
           message: messageBody
         })
       })
@@ -817,6 +1074,479 @@
 
     // Initialize summary ticker on load
     updateSummary();
+  </script>
+
+  <!-- Floating Cart FAB -->
+  <button id="floating-cart-btn" class="floating-cart-fab" aria-label="Open Shopping Cart">
+    <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; fill: currentColor;">
+      <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18M7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7C5.89,17 5,16.1 5,15C5,14.44 5.23,13.93 5.6,13.56L6.96,11.11L3,3H1V1H4.27L5.21,3H20A1,1 0 0,1 21,4C21,4.17 20.95,4.34 20.88,4.5L17.3,11C16.94,11.64 16.27,12 15.55,12H8.1L7.2,14.63Z" />
+    </svg>
+    <span class="cart-badge-count" style="display: none; position: absolute; top: 0px; right: 0px; background-color: #a3e635; color: #122216; font-size: 0.75rem; font-weight: 800; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--primary-dark);">0</span>
+  </button>
+
+  <!-- Cart Overlay -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+
+  <!-- Cart Drawer -->
+  <div id="cart-drawer" class="cart-drawer">
+    
+    <!-- Drawer Header -->
+    <div class="cart-drawer-header">
+      <div class="cart-drawer-title">
+        <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; fill: currentColor;">
+          <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18M7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7C5.89,17 5,16.1 5,15C5,14.44 5.23,13.93 5.6,13.56L6.96,11.11L3,3H1V1H4.27L5.21,3H20A1,1 0 0,1 21,4C21,4.17 20.95,4.34 20.88,4.5L17.3,11C16.94,11.64 16.27,12 15.55,12H8.1L7.2,14.63Z" />
+        </svg>
+        Shopping Cart
+      </div>
+      <button id="cart-close-btn" class="cart-drawer-close" aria-label="Close Cart">
+        <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: currentColor;">
+          <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Drawer Body -->
+    <div class="cart-drawer-body">
+      
+      <!-- Cart Items List View -->
+      <div id="cart-list-view">
+        <!-- Empty State -->
+        <div id="cart-empty-state" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; color: var(--text-muted);">
+          <svg viewBox="0 0 24 24" style="width: 80px; height: 80px; fill: rgba(46, 125, 50, 0.15); margin-bottom: 20px;">
+            <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18M7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7C5.89,17 5,16.1 5,15C5,14.44 5.23,13.93 5.6,13.56L6.96,11.11L3,3H1V1H4.27L5.21,3H20A1,1 0 0,1 21,4C21,4.17 20.95,4.34 20.88,4.5L17.3,11C16.94,11.64 16.27,12 15.55,12H8.1L7.2,14.63Z" />
+          </svg>
+          <h4 style="font-size: 1.2rem; color: var(--text); margin-bottom: 8px; font-weight: 700;">Your cart is empty</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 24px; max-width: 250px;">Add premium manures to your cart to begin revitalizing your soil!</p>
+          <button onclick="UzhavanCart.closeDrawer();" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.9rem;">Start Shopping</button>
+        </div>
+
+        <!-- Items Container -->
+        <div id="cart-items-container" style="display: none;">
+          <div id="cart-items-list"></div>
+          
+          <div id="cart-shipping-tip" style="padding: 12px; border-radius: var(--radius-sm); font-size: 0.8rem; margin-top: 10px; color: var(--primary-dark); background-color: #fffaf0; border: 1px dashed rgba(93, 64, 55, 0.15);">
+            💡 Add a 25 KG Sack to get FREE shipping!
+          </div>
+        </div>
+      </div>
+
+      <!-- Checkout View (Transitioned in) -->
+      <div id="cart-checkout-view" style="display: none;">
+        <button onclick="UzhavanCart.showCartList()" style="background: none; border: none; cursor: pointer; color: var(--primary-dark); font-weight: 600; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 20px; font-size: 0.9rem; transition: var(--transition);" class="back-to-cart-btn">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M20,11H7.83l5.59-5.59L12,4l-8,8l8,8l1.41-1.41L7.83,13H20V11Z"/></svg>
+          Back to Cart List
+        </button>
+        
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 20px;">Checkout Details</h3>
+        
+        <form id="cart-checkout-form" onsubmit="handleCartCheckoutSubmit(event)" class="cart-checkout-form">
+          <div class="form-group">
+            <label for="cart-order-name">Your Full Name *</label>
+            <input type="text" id="cart-order-name" class="form-control" placeholder="E.g., Ram Kumar" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="cart-order-phone">WhatsApp Number *</label>
+            <input type="tel" id="cart-order-phone" class="form-control" placeholder="E.g., +91 99446 34026" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="cart-order-category">Are you a: *</label>
+            <select id="cart-order-category" class="form-control" required style="width: 100%; padding: 10px; border: 1px solid rgba(46, 125, 50, 0.2); border-radius: var(--radius-sm); font-size: 0.9rem; background-color: var(--white);">
+              <option value="" disabled selected>Select grower class</option>
+              <option value="Farmer">Commercial Farmer</option>
+              <option value="Home Gardener">Home / Terrace Gardener</option>
+              <option value="Nursery">Nursery Operator</option>
+              <option value="Distributor">Fertilizer Distributor</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="cart-order-address">Delivery Address *</label>
+            <input type="text" id="cart-order-address" class="form-control" placeholder="City, State, Zip Code" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="cart-order-message">Special Instructions / Custom Requests</label>
+            <textarea id="cart-order-message" class="form-control" placeholder="Let us know what crops you are raising or details on vehicle accessibility for large bulk deliveries." style="width: 100%; min-height: 80px; resize: vertical; border: 1px solid rgba(46, 125, 50, 0.2); border-radius: var(--radius-sm); padding: 10px; font-size: 0.9rem;"></textarea>
+          </div>
+          
+          <button type="submit" id="cart-submit-btn" class="place-order-btn" style="width:100%; border-radius: var(--radius-sm); margin-top: 15px; padding: 12px; gap: 8px;">
+            Book Order & Confirm
+          </button>
+        </form>
+      </div>
+
+      <!-- Success View (Order Booked) -->
+      <div id="cart-success-view" style="display: none; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center;">
+        <div style="width: 64px; height: 64px; background-color: var(--accent); color: var(--primary-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+          <svg viewBox="0 0 24 24" style="width: 36px; height: 36px; fill: currentColor;">
+            <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
+          </svg>
+        </div>
+        <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 10px;">Order Booked!</h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 25px; max-width: 280px;">Your cart items have been successfully saved. Message our farm coordinator on WhatsApp to finalize transit routes and shipping discounts!</p>
+        
+        <a href="#" id="cart-wa-confirm-btn" target="_blank" class="wa-action-btn" style="width: 100%; text-align: center; margin-bottom: 12px; padding: 12px; font-size: 0.95rem;">
+          <svg viewBox="0 0 24 24" style="width:20px; height:20px; fill:white; display: inline-block; vertical-align: middle; margin-right: 8px;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.47 16.86L2 22L7.3 20.61C8.74 21.39 10.37 21.8 12.04 21.8C17.5 21.8 21.95 17.35 21.95 11.9C21.95 9.26 20.92 6.78 19.05 4.9C17.18 3.03 14.68 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.9C20.28 16.44 16.58 20.13 12.04 20.13C10.61 20.13 9.22 19.76 8 19.05L7.71 18.87L4.56 19.7L5.39 16.63L5.2 16.32C4.42 15.09 4 13.5 4 11.91C4 7.37 7.6 3.67 12.05 3.67M8.83 7.68C8.63 7.68 8.3 7.76 8.03 8.05C7.76 8.34 7 9.08 7 10.58C7 12.08 8.09 13.53 8.24 13.73C8.39 13.93 10.33 17.08 13.37 18.28C16.27 19.42 16.85 19.14 17.48 18.54C18.1 17.94 18.85 16.53 19 15.86C19.15 15.19 19.15 14.62 19.1 14.5C19.05 14.39 18.9 14.33 18.67 14.22C18.45 14.11 17.35 13.56 17.14 13.49C16.94 13.41 16.79 13.38 16.64 13.61C16.49 13.83 16.07 14.33 15.94 14.49C15.8 14.66 15.67 14.68 15.45 14.56C14.6 14.14 13.78 13.59 13.06 12.94C12.5 12.44 12.12 11.82 12.01 11.63C11.9 11.41 12 11.29 12.11 11.18C12.21 11.08 12.33 10.92 12.44 10.79C12.56 10.67 12.6 10.58 12.67 10.43C12.75 10.29 12.71 10.16 12.66 10.05C12.6 9.94 12.11 8.7 11.9 8.21C11.69 7.72 11.48 7.79 11.33 7.79C11.18 7.79 11 7.68 10.79 7.68M8.83 7.68"/></svg>
+          Confirm on WhatsApp
+        </a>
+        <button onclick="UzhavanCart.closeDrawer()" class="place-order-btn" style="width: 100%; margin-top: 0; background-color: var(--accent); color: var(--primary-dark); font-weight: 700; padding: 10px; font-size: 0.95rem;">
+          Continue Shopping
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Drawer Footer -->
+    <div class="cart-drawer-footer" id="cart-drawer-footer" style="display: none;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>Cart Subtotal</span>
+        <strong id="cart-subtotal-val" style="color: var(--text);">₹0</strong>
+      </div>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.9rem; color: var(--text-muted);">
+        <span>Transporter Freight</span>
+        <strong id="cart-delivery-val" style="color: var(--text);">₹60</strong>
+      </div>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 20px; padding-top: 15px; border-top: 1px dashed rgba(0,0,0,0.1); font-size: 1.15rem;">
+        <span style="font-weight: 700; color: var(--primary-dark);">Estimated Total</span>
+        <strong id="cart-total-val" style="color: var(--primary-dark); font-weight: 800;">₹0</strong>
+      </div>
+      <button onclick="UzhavanCart.showCheckout()" class="place-order-btn" style="width: 100%; margin-top: 0; padding: 14px; font-size: 1.05rem; font-weight: 700;">
+        Proceed to Checkout
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Shared Cart JS Logic inside order.html -->
+  <script>
+    const UzhavanCart = {
+      items: [],
+      
+      init() {
+        this.load();
+        this.registerEvents();
+        this.updateUI();
+      },
+      
+      load() {
+        const saved = localStorage.getItem('uzhavan_cart');
+        if (saved) {
+          try {
+            this.items = JSON.parse(saved);
+          } catch (e) {
+            this.items = [];
+          }
+        }
+      },
+      
+      save() {
+        localStorage.setItem('uzhavan_cart', JSON.stringify(this.items));
+        this.updateUI();
+      },
+      
+      addItem(product, size, price, image, spec) {
+        const existing = this.items.find(item => item.product === product && item.size === size);
+        if (existing) {
+          existing.quantity += 1;
+        } else {
+          this.items.push({
+            product,
+            size,
+            price: parseFloat(price),
+            image,
+            spec,
+            quantity: 1
+          });
+        }
+        this.save();
+        this.openDrawer();
+      },
+      
+      updateQuantity(product, size, newQty) {
+        const item = this.items.find(item => item.product === product && item.size === size);
+        if (item) {
+          item.quantity = parseInt(newQty);
+          if (item.quantity <= 0) {
+            this.removeItem(product, size);
+          } else {
+            this.save();
+          }
+        }
+      },
+      
+      removeItem(product, size) {
+        this.items = this.items.filter(item => !(item.product === product && item.size === size));
+        this.save();
+      },
+      
+      clear() {
+        this.items = [];
+        this.save();
+      },
+      
+      get count() {
+        return this.items.reduce((sum, item) => sum + item.quantity, 0);
+      },
+      
+      get subtotal() {
+        return this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      },
+      
+      get deliveryFee() {
+        if (this.items.length === 0) return 0;
+        const hasLargePack = this.items.some(item => item.size === '25 KG');
+        if (this.subtotal >= 1000 || hasLargePack) {
+          return 0;
+        }
+        return 60;
+      },
+      
+      get total() {
+        return this.subtotal + this.deliveryFee;
+      },
+      
+      openDrawer() {
+        document.getElementById('cart-drawer').classList.add('open');
+        document.getElementById('cart-overlay').classList.add('visible');
+        document.getElementById('cart-success-view').style.display = 'none';
+        this.showCartList();
+      },
+      
+      closeDrawer() {
+        document.getElementById('cart-drawer').classList.remove('open');
+        document.getElementById('cart-overlay').classList.remove('visible');
+      },
+      
+      showCheckout() {
+        document.getElementById('cart-list-view').style.display = 'none';
+        document.getElementById('cart-checkout-view').style.display = 'block';
+      },
+      
+      showCartList() {
+        document.getElementById('cart-list-view').style.display = 'block';
+        document.getElementById('cart-checkout-view').style.display = 'none';
+      },
+      
+      updateUI() {
+        const count = this.count;
+        const badges = document.querySelectorAll('.cart-badge-count');
+        badges.forEach(badge => {
+          badge.textContent = count;
+          badge.style.display = count > 0 ? 'flex' : 'none';
+        });
+        
+        const floatBtn = document.getElementById('floating-cart-btn');
+        if (floatBtn) {
+          floatBtn.style.display = count > 0 ? 'flex' : 'none';
+        }
+        
+        const container = document.getElementById('cart-items-list');
+        if (!container) return;
+        
+        if (this.items.length === 0) {
+          document.getElementById('cart-empty-state').style.display = 'flex';
+          document.getElementById('cart-items-container').style.display = 'none';
+          document.getElementById('cart-drawer-footer').style.display = 'none';
+        } else {
+          document.getElementById('cart-empty-state').style.display = 'none';
+          document.getElementById('cart-items-container').style.display = 'block';
+          document.getElementById('cart-drawer-footer').style.display = 'block';
+          
+          container.innerHTML = this.items.map(item => {
+            const displayPrice = item.price === 0 ? 'Quote Required' : '₹' + (item.price * item.quantity).toLocaleString();
+            return `
+              <div class="cart-item-row" style="display: flex; gap: 15px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.05); align-items: center;">
+                <img src="${item.image}" alt="${item.product}" style="width: 60px; height: 60px; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid rgba(0,0,0,0.1);">
+                <div style="flex-grow: 1;">
+                  <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 3px; color: var(--primary-dark);">${item.product}</h4>
+                  <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">
+                    <span style="background-color: var(--accent); color: var(--primary-dark); padding: 2px 6px; border-radius: 4px; font-weight: 600; margin-right: 6px;">${item.size}</span>
+                    <span>${item.spec}</span>
+                  </div>
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-control" style="display: flex; align-items: center; border: 1px solid rgba(46, 125, 50, 0.2); border-radius: 4px; overflow: hidden; background: white;">
+                      <button onclick="UzhavanCart.updateQuantity('${item.product}', '${item.size}', ${item.quantity - 1})" style="border: none; background: none; padding: 4px 10px; cursor: pointer; font-weight: bold; color: var(--primary);">-</button>
+                      <span style="padding: 4px 12px; font-size: 0.9rem; font-weight: 600; color: var(--text); min-width: 30px; text-align: center;">${item.quantity}</span>
+                      <button onclick="UzhavanCart.updateQuantity('${item.product}', '${item.size}', ${item.quantity + 1})" style="border: none; background: none; padding: 4px 10px; cursor: pointer; font-weight: bold; color: var(--primary);">+</button>
+                    </div>
+                    <strong style="color: var(--primary-dark); font-size: 1rem;">${displayPrice}</strong>
+                  </div>
+                </div>
+                <button onclick="UzhavanCart.removeItem('${item.product}', '${item.size}')" style="border: none; background: none; cursor: pointer; color: #e53e3e; padding: 5px; display: flex; align-items: center; justify-content: center; transition: var(--transition);" class="cart-remove-item-btn" aria-label="Remove item">
+                  <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: currentColor;">
+                    <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/>
+                  </svg>
+                </button>
+              </div>
+            `;
+          }).join('');
+          
+          const containsQuote = this.items.some(item => item.price === 0);
+          document.getElementById('cart-subtotal-val').textContent = containsQuote ? 'Quote Required' : '₹' + this.subtotal.toLocaleString();
+          const fee = this.deliveryFee;
+          document.getElementById('cart-delivery-val').textContent = containsQuote ? 'Quote Required' : (fee === 0 ? 'FREE' : '₹' + fee);
+          document.getElementById('cart-total-val').textContent = containsQuote ? 'Quote Required' : '₹' + this.total.toLocaleString();
+          
+          const tipBox = document.getElementById('cart-shipping-tip');
+          if (containsQuote) {
+            tipBox.innerHTML = '💡 Bulk load rates will be calculated by our transporter.';
+            tipBox.style.backgroundColor = '#ebf8ff';
+          } else if (fee === 0) {
+            tipBox.innerHTML = '<span style="color: #006644; font-weight: 600;">🎉 Free shipping unlocked!</span>';
+            tipBox.style.backgroundColor = '#e6fffa';
+          } else {
+            const remaining = 1000 - this.subtotal;
+            tipBox.innerHTML = `💡 Add <strong>₹${remaining}</strong> more or a <strong>25 KG sack</strong> for FREE shipping!`;
+            tipBox.style.backgroundColor = '#fffaf0';
+          }
+        }
+      },
+      
+      registerEvents() {
+        const addBtn = document.getElementById('add-to-cart-summary-btn');
+        if (addBtn) {
+          addBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            const items = getSelectedItems();
+            items.forEach(item => {
+              let price = item.price;
+              if (price === 'Custom Quote') {
+                price = 0; // Special zero price indicating custom quote
+              }
+              const image = item.product === 'Goat Manure' 
+                ? "{% static '240_F_684861872_ukxcR8lHBQp3tQr21YuJ8IVVS0VEI87r.jpg' %}"
+                : "{% static '240_F_1627811796_x3txHwJNHbUxDGsgUMlZsjaoAPlAzHEy.jpg' %}";
+              
+              this.addItem(item.product, item.size, price, image, item.spec);
+            });
+            
+            const originalHtml = addBtn.innerHTML;
+            addBtn.style.pointerEvents = 'none';
+            addBtn.innerHTML = `
+              <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: currentColor; animation: pulse 0.5s infinite;">
+                <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
+              </svg>
+              All Added to Cart!
+            `;
+            addBtn.style.backgroundColor = '#2d6a4f';
+            addBtn.style.color = '#ffffff';
+            
+            setTimeout(() => {
+              addBtn.innerHTML = originalHtml;
+              addBtn.style.pointerEvents = 'auto';
+              addBtn.style.backgroundColor = '';
+              addBtn.style.color = '';
+            }, 1200);
+          });
+        }
+
+        const toggleBtn = document.getElementById('cart-toggle-btn');
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.openDrawer();
+          });
+        }
+        
+        const floatBtn = document.getElementById('floating-cart-btn');
+        if (floatBtn) {
+          floatBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.openDrawer();
+          });
+        }
+        
+        const closeBtn = document.getElementById('cart-close-btn');
+        if (closeBtn) {
+          closeBtn.addEventListener('click', () => this.closeDrawer());
+        }
+        
+        const overlay = document.getElementById('cart-overlay');
+        if (overlay) {
+          overlay.addEventListener('click', () => this.closeDrawer());
+        }
+      }
+    };
+
+    function handleCartCheckoutSubmit(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('cart-order-name').value;
+      const phone = document.getElementById('cart-order-phone').value;
+      const category = document.getElementById('cart-order-category').value;
+      const address = document.getElementById('cart-order-address').value;
+      const instructions = document.getElementById('cart-order-message').value;
+      
+      if (!name || !phone || !category || !address) {
+        alert("Please fill in all required fields.");
+        return;
+      }
+      
+      const itemsSummary = UzhavanCart.items.map(item => `${item.product} (${item.size}) x ${item.quantity}`).join(', ');
+      const containsQuote = UzhavanCart.items.some(item => item.price === 0);
+      const totalDisplay = containsQuote ? 'Quote Required' : `₹${UzhavanCart.total}`;
+      const fullMessage = `Cart items order: ${itemsSummary}\nTotal: ${totalDisplay}\n\nShipping Address: ${address}\nInstructions: ${instructions}`;
+      
+      // Determine product name for DB. If only one item, send it. If multiple, send 'Multiple'
+      let dbProduct = 'Multiple';
+      if (UzhavanCart.items.length === 1) {
+        dbProduct = UzhavanCart.items[0].product;
+      }
+      
+      const submitBtn = document.getElementById('cart-submit-btn');
+      const originalBtnText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <div style="width: 20px; height: 20px; border: 2.5px solid rgba(255,255,255,0.3); border-top: 2.5px solid white; border-radius: 50%; animation: spinLoader 0.7s linear infinite; display: inline-block; vertical-align: middle; margin-right: 8px;"></div>
+        Booking Order...
+      `;
+      
+      fetch('/submit-inquiry/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          phone: phone,
+          category: category,
+          product: dbProduct,
+          message: fullMessage
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          document.getElementById('cart-checkout-view').style.display = 'none';
+          document.getElementById('cart-success-view').style.display = 'flex';
+          
+          const waBtn = document.getElementById('cart-wa-confirm-btn');
+          if (waBtn) {
+            waBtn.href = data.whatsapp_url;
+          }
+          
+          UzhavanCart.clear();
+        } else {
+          alert("Order Error: " + data.message);
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
+        }
+      })
+      .catch(error => {
+        console.error("AJAX error: ", error);
+        alert("Connection error. Please try again.");
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+      });
+    }
+
+    // Initialize UzhavanCart on page load!
+    document.addEventListener('DOMContentLoaded', () => {
+      UzhavanCart.init();
+    });
   </script>
 </body>
 </html>
