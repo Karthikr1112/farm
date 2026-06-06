@@ -11,6 +11,7 @@ class Inquiry(models.Model):
     PRODUCT_INTERESTS = [
         ('Goat Manure', 'Goat Manure'),
         ('Cow Manure', 'Cow Manure'),
+        ('Straw Bales', 'Straw Bales'),
         ('Multiple', 'Multiple Products'),
     ]
 

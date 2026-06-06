@@ -778,6 +778,28 @@
             </select>
           </div>
         </div>
+
+        <!-- Straw Bales Selectable Card -->
+        <div class="product-selectable-card" data-product="Straw Bales" onclick="toggleProduct(this)">
+          <div class="product-checkmark">
+            <svg viewBox="0 0 24 24"><path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/></svg>
+          </div>
+          <img src="{% static 'istockphoto-1310179701-612x612.jpg' %}" alt="Straw Bales" class="product-card-img">
+          <div class="product-card-title">Straw Bales</div>
+          <div class="product-card-spec">Premium Wheat & Paddy Straw</div>
+          <p style="font-size:0.8rem; color: var(--text-muted); margin-bottom: 12px;">High-density golden straw. Sourced directly from our organic grain farms.</p>
+          
+          <!-- Size Selector Inside Card -->
+          <div style="width: 100%; margin-top: auto;" onclick="event.stopPropagation()">
+            <label style="display: block; font-size: 0.8rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 4px; text-align: left;">Choose Package:</label>
+            <select class="form-control card-weight-select" data-product="Straw Bales" onchange="updateSummary()" style="padding: 6px 10px; font-size: 0.85rem; border-radius: 8px; border: 2px solid #e2e8f0; width: 100%;">
+              <option value="Single Bale" data-price="150" data-spec="High-density bale">Single Bale - ₹150</option>
+              <option value="5 Bales" data-price="700" data-spec="5 Bales Bundle" selected>5 Bales Bundle - ₹700</option>
+              <option value="10 Bales" data-price="1300" data-spec="10 Bales Bundle">10 Bales Bundle - ₹1300</option>
+              <option value="Bulk" data-price="Bulk" data-spec="Tractor/Truck Load">Bulk Load - Quote</option>
+            </select>
+          </div>
+        </div>
       </div>
 
       <!-- STEP 2: Delivery & Contact Details -->
@@ -902,6 +924,12 @@
         '5 KG': { price: 300, spec: 'Microbial Humus' },
         '25 KG': { price: 1200, spec: 'Microbial Humus' },
         'Bulk': { price: 'Custom Quote', spec: 'Microbial Humus' }
+      },
+      'Straw Bales': {
+        'Single Bale': { price: 150, spec: 'Premium Wheat Straw' },
+        '5 Bales': { price: 700, spec: 'Wheat Straw Bundle' },
+        '10 Bales': { price: 1300, spec: 'Wheat Straw Bundle' },
+        'Bulk': { price: 'Custom Quote', spec: 'Tractor/Truck Load' }
       }
     };
 
@@ -1416,9 +1444,12 @@
               if (price === 'Custom Quote') {
                 price = 0; // Special zero price indicating custom quote
               }
-              const image = item.product === 'Goat Manure' 
-                ? "{% static '240_F_684861872_ukxcR8lHBQp3tQr21YuJ8IVVS0VEI87r.jpg' %}"
-                : "{% static '240_F_1627811796_x3txHwJNHbUxDGsgUMlZsjaoAPlAzHEy.jpg' %}";
+              let image = "{% static '240_F_1627811796_x3txHwJNHbUxDGsgUMlZsjaoAPlAzHEy.jpg' %}";
+              if (item.product === 'Goat Manure') {
+                image = "{% static '240_F_684861872_ukxcR8lHBQp3tQr21YuJ8IVVS0VEI87r.jpg' %}";
+              } else if (item.product === 'Straw Bales') {
+                image = "{% static 'istockphoto-1310179701-612x612.jpg' %}";
+              }
               
               this.addItem(item.product, item.size, price, image, item.spec);
             });

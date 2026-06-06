@@ -12,7 +12,7 @@
   <meta name="author" content="Uzhavan Valam">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="{% static 'styles.css' %}?v=1.9">
+  <link rel="stylesheet" href="{% static 'styles.css' %}?v=2.2">
 </head>
 <body>
 
@@ -199,6 +199,59 @@
     </div>
   </section>
 
+  <!-- Straw Bales Intro Section -->
+  <section id="straw-bales" class="section-padding straw-bales-intro">
+    <div class="container">
+      <div class="straw-bales-grid">
+        <div class="straw-bales-images scroll-reveal reveal-left">
+          <div class="straw-bales-img-wrapper straw-bales-img-large">
+            <img src="{% static 'images.jfif' %}" alt="Premium round straw bale in sunny agricultural field">
+          </div>
+          <div class="straw-bales-img-wrapper straw-bales-img-small">
+            <img src="{% static 'download (2).jfif' %}" alt="Stacked rectangular wheat straw bales pile">
+          </div>
+          <div class="straw-bales-img-wrapper straw-bales-img-small">
+            <img src="{% static 'istockphoto-1310179701-612x612.jpg' %}" alt="Golden wheat straw bale close-up">
+          </div>
+        </div>
+        
+        <div class="straw-bales-content scroll-reveal reveal-right">
+          <div class="badge badge-alt">New Launch</div>
+          <h2>Premium Agricultural <span>Straw Bales</span></h2>
+          <p class="straw-bales-highlight">Tightly compacted, sun-dried, and 100% natural straw bales for multi-purpose garden and farm use.</p>
+          <p class="straw-bales-text">Sourced directly from our high-yielding organic grain farms, our wheat and paddy straw bales are thoroughly sun-dried to eliminate moisture, preventing mold and rotting. They contain zero weed seeds or pesticide residue, making them the gold standard for mulching, livestock bedding, mushroom cultivation, and winter insulation.</p>
+          
+          <div class="straw-bales-features">
+            <div class="straw-bales-feat-item">
+              <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" /></svg>
+              <span>100% Organic Straw</span>
+            </div>
+            <div class="straw-bales-feat-item">
+              <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" /></svg>
+              <span>High-Density Bales</span>
+            </div>
+            <div class="straw-bales-feat-item">
+              <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" /></svg>
+              <span>Zero Mold / Rot</span>
+            </div>
+            <div class="straw-bales-feat-item">
+              <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" /></svg>
+              <span>Weed & Seed Free</span>
+            </div>
+          </div>
+          
+          <div style="display: flex; gap: 16px;">
+            <a href="{% url 'order_page' %}" class="btn btn-primary">Book Straw Bales</a>
+            <a href="https://wa.me/919944634026?text=Hi,%20I%20am%20interested%20in%20your%20Premium%20Straw%20Bales." target="_blank" class="btn btn-whatsapp">
+              <svg viewBox="0 0 24 24" style="width:20px; height:20px; fill:white;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.47 16.86L2 22L7.3 20.61C8.74 21.39 10.37 21.8 12.04 21.8C17.5 21.8 21.95 17.35 21.95 11.9C21.95 9.26 20.92 6.78 19.05 4.9C17.18 3.03 14.68 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.9C20.28 16.44 16.58 20.13 12.04 20.13C10.61 20.13 9.22 19.76 8 19.05L7.71 18.87L4.56 19.7L5.39 16.63L5.2 16.32C4.42 15.09 4 13.5 4 11.91C4 7.37 7.6 3.67 12.05 3.67M8.83 7.68C8.63 7.68 8.3 7.76 8.03 8.05C7.76 8.34 7 9.08 7 10.58C7 12.08 8.09 13.53 8.24 13.73C8.39 13.93 10.33 17.08 13.37 18.28C16.27 19.42 16.85 19.14 17.48 18.54C18.1 17.94 18.85 16.53 19 15.86C19.15 15.19 19.15 14.62 19.1 14.5C19.05 14.39 18.9 14.33 18.67 14.22C18.45 14.11 17.35 13.56 17.14 13.49C16.94 13.41 16.79 13.38 16.64 13.61C16.49 13.83 16.07 14.33 15.94 14.49C15.8 14.66 15.67 14.68 15.45 14.56C14.6 14.14 13.78 13.59 13.06 12.94C12.5 12.44 12.12 11.82 12.01 11.63C11.9 11.41 12 11.29 12.11 11.18C12.21 11.08 12.33 10.92 12.44 10.79C12.56 10.67 12.6 10.58 12.67 10.43C12.75 10.29 12.71 10.16 12.66 10.05C12.6 9.94 12.11 8.7 11.9 8.21C11.69 7.72 11.48 7.79 11.33 7.79C11.18 7.79 11 7.68 10.79 7.68M8.83 7.68"/></svg>
+              WhatsApp Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Products Section -->
   <section id="products" class="section-padding products">
     <div class="container">
@@ -257,6 +310,33 @@
               <tr>
                 <td>Best For</td>
                 <td>Large Farms, Lawns & Nursery Soil</td>
+              </tr>
+            </table>
+            <a href="{% url 'order_page' %}" class="btn btn-secondary text-center" style="width:100%;">Inquire Now</a>
+          </div>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="product-card">
+          <div class="product-img-holder">
+            <img src="{% static 'istockphoto-1310179701-612x612.jpg' %}" alt="Premium Wheat Straw Bales">
+            <span class="product-badge">New Product</span>
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">Straw Bales</h3>
+            <p class="product-desc">Tightly packed golden agricultural straw. Dry and weed-free. Provides exceptional soil protection, moisture retention, weed suppression, and animal bedding.</p>
+            <table class="product-spec-table">
+              <tr>
+                <td>Available Sizes</td>
+                <td>Single / 5-Pack / 10-Pack / Bulk</td>
+              </tr>
+              <tr>
+                <td>Form</td>
+                <td>Tightly Bound High-Density Bales</td>
+              </tr>
+              <tr>
+                <td>Best For</td>
+                <td>Garden Mulch, Bedding & Cultivation</td>
               </tr>
             </table>
             <a href="{% url 'order_page' %}" class="btn btn-secondary text-center" style="width:100%;">Inquire Now</a>
@@ -519,6 +599,61 @@
             <div class="gallery-info">
               <span class="gallery-cat">Packaging</span>
               <h4 class="gallery-title">Bulk Compost Sacks</h4>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gallery Item 7 -->
+        <div class="gallery-item" onclick="openLightbox(this)" data-large="{% static 'download (2).jfif' %}" data-caption="Traditionally Stacked Rectangular Wheat Straw Bales">
+          <img src="{% static 'download (2).jfif' %}" alt="Rectangular Wheat Straw Bales stack">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-cat">Straw Bales</span>
+              <h4 class="gallery-title">Rectangular Wheat Straw</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 8 -->
+        <div class="gallery-item" onclick="openLightbox(this)" data-large="{% static 'images.jfif' %}" data-caption="High-Density Round Straw Bales for Livestock Bedding">
+          <img src="{% static 'images.jfif' %}" alt="Round Straw Bale in Field">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-cat">Straw Bales</span>
+              <h4 class="gallery-title">Round Wheat Straw Bale</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 9 -->
+        <div class="gallery-item" onclick="openLightbox(this)" data-large="{% static 'download (1).jfif' %}" data-caption="Freshly Harvested Paddy Straw Bales Ready for Transport">
+          <img src="{% static 'download (1).jfif' %}" alt="Paddy Straw Bales in Field">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-cat">Straw Bales</span>
+              <h4 class="gallery-title">Paddy Straw Field</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 10 -->
+        <div class="gallery-item" onclick="openLightbox(this)" data-large="{% static 'download.jfif' %}" data-caption="Mechanized Harvesting and Straw Baling in Action">
+          <img src="{% static 'download.jfif' %}" alt="Tractor pulling baler machine">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-cat">Straw Bales</span>
+              <h4 class="gallery-title">Harvesting & Baling</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 11 -->
+        <div class="gallery-item" onclick="openLightbox(this)" data-large="{% static 'istockphoto-1310179701-612x612.jpg' %}" data-caption="Premium Quality Golden Wheat Straw Bales Pile">
+          <img src="{% static 'istockphoto-1310179701-612x612.jpg' %}" alt="Straw Bales pile close up">
+          <div class="gallery-overlay">
+            <div class="gallery-info">
+              <span class="gallery-cat">Straw Bales</span>
+              <h4 class="gallery-title">Golden Straw Stack</h4>
             </div>
           </div>
         </div>

@@ -608,9 +608,9 @@ nav a:hover, nav a.active {
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  max-width: 860px;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 
@@ -937,7 +937,7 @@ nav a:hover, nav a.active {
   transition: var(--transition);
 }
 
-.gallery-item:hover class, .gallery-item:hover .gallery-overlay {
+.gallery-item:hover .gallery-overlay {
   opacity: 1;
 }
 
@@ -1470,6 +1470,9 @@ footer {
 
 /* Responsive Breakpoints */
 @media (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .benefits-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1759,3 +1762,103 @@ nav ul li a:hover::after, nav ul li a.active::after {
   border: 1px solid rgba(46, 125, 50, 0.06) !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.015) !important;
 }
+
+/* Straw Bales Introduction Showcase Section */
+.straw-bales-intro {
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.straw-bales-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.straw-bales-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.straw-bales-img-wrapper {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  border: 4px solid var(--bg-card);
+  transition: var(--transition);
+}
+
+.straw-bales-img-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.straw-bales-img-large {
+  grid-column: span 2;
+  height: 300px;
+}
+
+.straw-bales-img-large img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.straw-bales-img-small {
+  height: 200px;
+}
+
+.straw-bales-img-small img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.straw-bales-content h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.straw-bales-highlight {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--primary-dark);
+  margin-bottom: 20px;
+}
+
+.straw-bales-text {
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+.straw-bales-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.straw-bales-feat-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.straw-bales-feat-item svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--primary);
+}
+
+@media (max-width: 992px) {
+  .straw-bales-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
